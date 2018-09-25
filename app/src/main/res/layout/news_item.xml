@@ -4,14 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:foreground="?attr/selectableItemBackground"
-    android:padding="8dp">
+    android:padding="8dp"
+    tools:background="#ffd7d7">
 
     <ImageView
         android:id="@+id/thumbnail"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -25,5 +27,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/thumbnail"
         tools:text="Two brothers were rescued and treated at different NGOs. The reaction when they are reunited is priceless!" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/thumbnail"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="commonvanilla" />
+
+    <TextView
+        android:id="@+id/xHoursAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textSize="13sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/author"
+        app:layout_constraintStart_toEndOf="@id/author"
+        tools:text="1 hour ago" />
+
+    <TextView
+        android:id="@+id/numComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textSize="13sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/author"
+        app:layout_constraintStart_toEndOf="@id/xHoursAgo"
+        tools:text="1297 comments" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
