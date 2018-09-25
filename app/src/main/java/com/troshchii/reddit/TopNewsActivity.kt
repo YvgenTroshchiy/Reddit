@@ -25,8 +25,7 @@ class TopNewsActivity : DaggerAppCompatActivity() {
             .compose { transformer(it) }
             .subscribe({
                 //TODO: debug
-                val news = it
-                val i = 0
+                val topNews = it
             }, {
                 logW(tag, it)
             })
