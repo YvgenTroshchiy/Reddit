@@ -1,7 +1,8 @@
-package com.troshchii.reddit
+package com.troshchii.reddit.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.troshchii.reddit.R
 import com.troshchii.reddit.di.scope.ActivityScoped
 import com.troshchii.reddit.extensions.getLogTag
 import com.troshchii.reddit.extensions.logW

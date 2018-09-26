@@ -30,6 +30,7 @@ androidExtensions { experimental = true }
 
 ext {
     dagger_version = "2.16"
+    arch_components_version = '1.1.1'
 }
 
 dependencies {
@@ -40,7 +41,7 @@ dependencies {
 
     // region Kotlin Utilities
     implementation 'org.jetbrains.anko:anko:0.10.3'
-//    implementation 'androidx.core:core-ktx:1.0.0'
+    implementation 'androidx.core:core-ktx:1.0.0'
     // endregion
 
     // region Ui
@@ -48,8 +49,14 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     // endregion
 
+    // region Android Arch
+    implementation "android.arch.lifecycle:extensions:$arch_components_version"
+    implementation "android.arch.lifecycle:reactivestreams:$arch_components_version"
+    // endregion
+
     // region RxJava
     implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     // endregion
 
