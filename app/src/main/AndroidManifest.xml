@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".ui.TopNewsActivity">
+        <activity android:name=".ui.topnews.TopNewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

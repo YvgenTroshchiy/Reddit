@@ -13,7 +13,7 @@ class App : DaggerApplication() {
         DaggerAppComponent.builder().application(this).build()
 
     override fun onCreate() {
-        if (BuildConfig.DEBUG) setStrictMode()
+//        if (BuildConfig.DEBUG) setStrictMode()
         super.onCreate()
 
         if (LeakCanary.isInAnalyzerProcess(this)) {

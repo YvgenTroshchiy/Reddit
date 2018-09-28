@@ -1,4 +1,4 @@
-package com.troshchii.reddit.di.vm
+package com.troshchii.reddit.core.vm
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

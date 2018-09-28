@@ -13,6 +13,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AppModule::class,
+        ViewModelModule::class,
         RedditServiceModule::class,
         ActivityBindingModule::class,
         AndroidSupportInjectionModule::class]
