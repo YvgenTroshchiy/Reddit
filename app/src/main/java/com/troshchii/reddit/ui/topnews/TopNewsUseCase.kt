@@ -20,7 +20,7 @@ class TopNewsUseCase @Inject constructor(
     override fun execute(): Single<TopNews> {
         logW(tag, "execute")
 
-        return service.topNews(10)
+        return service.topNews(100)
             .compose { transformer(it) }
     }
 }

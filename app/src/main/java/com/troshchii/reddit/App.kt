@@ -2,7 +2,6 @@ package com.troshchii.reddit
 
 import com.squareup.leakcanary.LeakCanary
 import com.troshchii.reddit.di.DaggerAppComponent
-import com.troshchii.reddit.extensions.setStrictMode
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
