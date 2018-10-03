@@ -5,20 +5,18 @@ import androidx.lifecycle.ViewModel
 import com.troshchii.reddit.exception.Failure
 import com.troshchii.reddit.extensions.plusAssign
 import com.troshchii.reddit.functional.Either
-import com.troshchii.reddit.network.TopNews
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 
 class TopNewsViewModel @Inject constructor(
-    topNewsUseCase: TopNewsUseCase
-    //TODO: Add mapper
+    topNewsUseCase: TopNewsUseCase,
+    private val topNewsMapper: TopNewsMapper
 ) : ViewModel() {
 
     private val disposable = CompositeDisposable()
 
-    // TODO: Use List<News>
-    val topNews: MutableLiveData<Either<Failure, TopNews>> = MutableLiveData()
+    val topNews: MutableLiveData<Either<Failure, List<News>>> = MutableLiveData()
 
     init {
         loadTopNews(topNewsUseCase)
@@ -27,7 +25,7 @@ class TopNewsViewModel @Inject constructor(
     private fun loadTopNews(topNewsUseCase: TopNewsUseCase) {
         disposable += topNewsUseCase.execute()
             .subscribe({
-                topNews.value = Either.Right(it)
+                topNews.value = Either.Right(topNewsMapper.computeTopNews(it))
             }, {
                 topNews.value = Either.Left(Failure.ServerError(message = it.message.toString()))
             })

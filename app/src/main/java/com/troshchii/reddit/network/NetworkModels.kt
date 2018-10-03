@@ -15,11 +15,11 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize data class Children(
     val kind: String,
-    val data: News
+    val data: ChildrenData
 ) : Parcelable
 
-@Parcelize data class News(
-    val preview: Preview,
+@Parcelize data class ChildrenData(
+    val preview: Preview?,
     val title: String,
     val author: String,
     val created_utc: String,
