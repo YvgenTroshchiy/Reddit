@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.vm.ViewModelFactory
 import com.troshchii.reddit.di.scope.ActivityScoped
-import com.troshchii.reddit.extensions.getLogTag
-import com.troshchii.reddit.extensions.logW
-import com.troshchii.reddit.extensions.observe
-import com.troshchii.reddit.extensions.viewModel
+import com.troshchii.reddit.extensions.*
 import com.troshchii.reddit.functional.Either
 import dagger.android.AndroidInjection
 import javax.inject.Inject
@@ -33,10 +30,10 @@ class TopNewsActivity : AppCompatActivity() {
         observe(viewModel.topNews) {
             when (it) {
                 is Either.Left -> {
-                    logW(tag, "Error")
+                    logW(tag, "Error: $it")
                 }
                 is Either.Right -> {
-                    logW(tag, "Success")
+                    logI(tag, "Success")
                 }
             }
         }

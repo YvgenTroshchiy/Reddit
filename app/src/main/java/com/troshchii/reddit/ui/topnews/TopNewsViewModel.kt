@@ -3,6 +3,8 @@ package com.troshchii.reddit.ui.topnews
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.troshchii.reddit.exception.Failure
+import com.troshchii.reddit.extensions.getLogTag
+import com.troshchii.reddit.extensions.logI
 import com.troshchii.reddit.extensions.plusAssign
 import com.troshchii.reddit.functional.Either
 import io.reactivex.disposables.CompositeDisposable
@@ -14,11 +16,14 @@ class TopNewsViewModel @Inject constructor(
     private val topNewsMapper: TopNewsMapper
 ) : ViewModel() {
 
+    private val tag = getLogTag<TopNewsViewModel>()
+
     private val disposable = CompositeDisposable()
 
     val topNews: MutableLiveData<Either<Failure, List<News>>> = MutableLiveData()
 
     init {
+        logI(tag, "init")
         loadTopNews(topNewsUseCase)
     }
 
