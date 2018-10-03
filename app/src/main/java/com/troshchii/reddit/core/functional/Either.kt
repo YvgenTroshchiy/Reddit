@@ -1,4 +1,4 @@
-package com.troshchii.reddit.functional
+package com.troshchii.reddit.core.functional
 
 
 sealed class Either<out L, out R> {

@@ -1,10 +1,10 @@
-package com.troshchii.reddit.network
+package com.troshchii.reddit.topnews.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 
-@Parcelize data class TopNews(
+@Parcelize data class TopNewsDto(
     val data: Data
 ) : Parcelable
 

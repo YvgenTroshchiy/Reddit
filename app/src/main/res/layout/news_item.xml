@@ -8,7 +8,7 @@
 
         <variable
             name="news"
-            type="com.troshchii.reddit.ui.topnews.News" />
+            type="com.troshchii.reddit.topnews.model.News" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

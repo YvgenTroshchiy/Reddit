@@ -1,4 +1,4 @@
-package com.troshchii.reddit.extensions
+package com.troshchii.reddit.core.extensions
 
 import android.content.Context
 import android.os.StrictMode

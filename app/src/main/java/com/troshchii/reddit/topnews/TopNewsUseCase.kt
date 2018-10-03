@@ -1,11 +1,11 @@
-package com.troshchii.reddit.ui.topnews
+package com.troshchii.reddit.topnews
 
 import com.troshchii.reddit.core.UseCase
-import com.troshchii.reddit.extensions.getLogTag
-import com.troshchii.reddit.extensions.logW
-import com.troshchii.reddit.extensions.transformer
+import com.troshchii.reddit.core.extensions.getLogTag
+import com.troshchii.reddit.core.extensions.logW
+import com.troshchii.reddit.core.extensions.transformer
 import com.troshchii.reddit.network.RedditService
-import com.troshchii.reddit.network.TopNews
+import com.troshchii.reddit.topnews.model.TopNewsDto
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -17,7 +17,7 @@ class TopNewsUseCase @Inject constructor(
 
     private val tag = getLogTag<TopNewsUseCase>()
 
-    override fun execute(): Single<TopNews> {
+    override fun execute(): Single<TopNewsDto> {
         logW(tag, "execute")
 
         return service.topNews(100)

@@ -1,9 +1,9 @@
-package com.troshchii.reddit.extensions
+package com.troshchii.reddit.core.extensions
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.*
 import androidx.lifecycle.Observer
-import com.troshchii.reddit.exception.Failure
+import com.troshchii.reddit.core.exception.Failure
 import io.reactivex.*
 
 

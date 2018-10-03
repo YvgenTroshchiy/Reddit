@@ -1,20 +1,19 @@
-package com.troshchii.reddit.ui.topnews
+package com.troshchii.reddit.topnews
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.troshchii.reddit.exception.Failure
-import com.troshchii.reddit.extensions.getLogTag
-import com.troshchii.reddit.extensions.logI
-import com.troshchii.reddit.extensions.plusAssign
-import com.troshchii.reddit.functional.Either
+import com.troshchii.reddit.core.exception.Failure
+import com.troshchii.reddit.core.extensions.getLogTag
+import com.troshchii.reddit.core.extensions.logI
+import com.troshchii.reddit.core.extensions.plusAssign
+import com.troshchii.reddit.core.functional.Either
+import com.troshchii.reddit.topnews.model.News
+import com.troshchii.reddit.topnews.model.toTopNews
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 
-class TopNewsViewModel @Inject constructor(
-    topNewsUseCase: TopNewsUseCase,
-    private val topNewsMapper: TopNewsMapper
-) : ViewModel() {
+class TopNewsViewModel @Inject constructor(topNewsUseCase: TopNewsUseCase) : ViewModel() {
 
     private val tag = getLogTag<TopNewsViewModel>()
 
@@ -30,7 +29,7 @@ class TopNewsViewModel @Inject constructor(
     private fun loadTopNews(topNewsUseCase: TopNewsUseCase) {
         disposable += topNewsUseCase.execute()
             .subscribe({
-                topNews.value = Either.Right(topNewsMapper.computeTopNews(it))
+                topNews.value = Either.Right(it.toTopNews())
             }, {
                 topNews.value = Either.Left(Failure.ServerError(message = it.message.toString()))
             })

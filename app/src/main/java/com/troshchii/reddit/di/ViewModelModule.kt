@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.troshchii.reddit.core.vm.ViewModelFactory
 import com.troshchii.reddit.core.vm.ViewModelKey
-import com.troshchii.reddit.ui.topnews.TopNewsViewModel
+import com.troshchii.reddit.topnews.TopNewsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

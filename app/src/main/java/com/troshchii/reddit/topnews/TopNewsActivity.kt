@@ -1,14 +1,14 @@
-package com.troshchii.reddit.ui.topnews
+package com.troshchii.reddit.topnews
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import com.troshchii.reddit.R
-import com.troshchii.reddit.extensions.*
+import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.vm.ViewModelFactory
 import com.troshchii.reddit.di.scope.ActivityScoped
-import com.troshchii.reddit.functional.Either
+import com.troshchii.reddit.core.functional.Either
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.topnews_activity.*
 import javax.inject.Inject

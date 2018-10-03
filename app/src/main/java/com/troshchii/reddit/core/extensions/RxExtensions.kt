@@ -1,4 +1,4 @@
-package com.troshchii.reddit.extensions
+package com.troshchii.reddit.core.extensions
 
 import io.reactivex.Observable
 import io.reactivex.Single

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.troshchii.reddit.exception
+package com.troshchii.reddit.core.exception
 
 /**
  * Base Class for handling errors/failures/exceptions.
