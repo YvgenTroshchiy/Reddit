@@ -1,14 +1,15 @@
 package com.troshchii.reddit.topnews
 
 import android.os.Bundle
+import android.widget.Toast.LENGTH_LONG
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.*
+import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.core.vm.ViewModelFactory
 import com.troshchii.reddit.di.scope.ActivityScoped
-import com.troshchii.reddit.core.functional.Either
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.topnews_activity.*
 import javax.inject.Inject
@@ -37,10 +38,11 @@ class TopNewsActivity : AppCompatActivity() {
             when (it) {
                 is Either.Left -> {
                     logW(tag, "Error: $it")
+                    toast("it", LENGTH_LONG)
                 }
                 is Either.Right -> {
-                    topNewsAdapter.news = it.right
                     logI(tag, "Success")
+                    topNewsAdapter.news = it.right
                 }
             }
         }

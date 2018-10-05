@@ -1,6 +1,7 @@
 package com.troshchii.reddit
 
 import com.squareup.leakcanary.LeakCanary
+import com.troshchii.reddit.core.extensions.setStrictMode
 import com.troshchii.reddit.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
@@ -12,7 +13,7 @@ class App : DaggerApplication() {
         DaggerAppComponent.builder().application(this).build()
 
     override fun onCreate() {
-//        if (BuildConfig.DEBUG) setStrictMode()
+        if (BuildConfig.DEBUG) setStrictMode()
         super.onCreate()
 
         if (LeakCanary.isInAnalyzerProcess(this)) {

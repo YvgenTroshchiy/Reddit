@@ -5,6 +5,7 @@ import android.os.StrictMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 
 fun setStrictMode() {
@@ -23,6 +24,9 @@ fun setStrictMode() {
             .build()
     )
 }
+
+fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) =
+    Toast.makeText(this, text, duration).show()
 
 fun Context.inflater(): LayoutInflater = LayoutInflater.from(this)
 
