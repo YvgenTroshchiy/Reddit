@@ -10,8 +10,11 @@ Top news|News details
 * Rotation support
 
 ## TODO
-- [ ] Pagination
 - [ ] Save image to the gallery
+- [ ] Pagination
+- [ ] Image placeholder
+- [ ] Empty state for adapter
+- [ ] Modularization
 
 ## Technologies, Components
 * Kotlin
