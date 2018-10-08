@@ -1,6 +1,6 @@
 # Simple Reddit client
 
-![](images/sample.png){:height="976px" width="549px"}
+<img src="images/sample.png" width="549" height="976">
 
 ## Features
 * Load top news from Reddit
