@@ -1,6 +1,8 @@
 # Simple Reddit client
 
-![](images/sample.png)
+Top news|News details
+:-------------------------:|:-------------------------:
+![](images/top_news.png)|![](images/news_details.png)
 
 ## Features
 * Load top news from Reddit
