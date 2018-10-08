@@ -1,7 +1,7 @@
 # Simple Reddit client
 
 Top news|News details
-:-------------------------:|:-------------------------:
+:-:|:-:
 ![](images/top_news.png)|![](images/news_details.png)
 
 ## Features
