@@ -53,7 +53,7 @@ class TopNewsActivity : AppCompatActivity() {
         newsList.addItemDecoration(DividerItemDecoration(this, VERTICAL))
 
         topNewsAdapter = TopNewsAdapter {
-            logI(tag, "Click to the ${it.title}")
+            logI(tag, "Click to the: ${it.title}, ${it.imageUrl}")
             it.imageUrl?.let { imageUrl ->
                 startActivity(NewsDetails.newIntent(this, imageUrl))
             }
