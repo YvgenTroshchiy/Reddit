@@ -1,6 +1,6 @@
 # Simple Reddit client
 
-<img src="images/sample.png" width="500" height="888">
+![](images/sample.png)
 
 ## Features
 * Load top news from Reddit
