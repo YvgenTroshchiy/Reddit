@@ -16,13 +16,15 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".topnews.TopNewsActivity">
+        <activity android:name="com.troshchii.reddit.ui.topnews.TopNewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.troshchii.reddit.ui.newsdetails.NewsDetails" />
 
     </application>
 

@@ -1,4 +1,4 @@
-package com.troshchii.reddit.topnews.model
+package com.troshchii.reddit.ui.topnews.model
 
 
 fun TopNewsDto.toTopNews() = data.children.map { childrenToNews(it) }

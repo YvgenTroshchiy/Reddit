@@ -1,6 +1,6 @@
 package com.troshchii.reddit.di
 
-import com.troshchii.reddit.topnews.TopNewsActivity
+import com.troshchii.reddit.ui.topnews.TopNewsActivity
 import com.troshchii.reddit.di.scope.ActivityScoped
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

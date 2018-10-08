@@ -1,11 +1,11 @@
-package com.troshchii.reddit.topnews
+package com.troshchii.reddit.ui.topnews
 
 import com.troshchii.reddit.core.UseCase
 import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logW
 import com.troshchii.reddit.core.extensions.transformer
 import com.troshchii.reddit.network.RedditService
-import com.troshchii.reddit.topnews.model.TopNewsDto
+import com.troshchii.reddit.ui.topnews.model.TopNewsDto
 import io.reactivex.Single
 import javax.inject.Inject
 

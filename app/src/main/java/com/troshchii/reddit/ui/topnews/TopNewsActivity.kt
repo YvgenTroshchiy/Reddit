@@ -1,4 +1,4 @@
-package com.troshchii.reddit.topnews
+package com.troshchii.reddit.ui.topnews
 
 import android.os.Bundle
 import android.widget.Toast.LENGTH_LONG
@@ -10,6 +10,7 @@ import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.core.vm.ViewModelFactory
 import com.troshchii.reddit.di.scope.ActivityScoped
+import com.troshchii.reddit.ui.newsdetails.NewsDetails
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.topnews_activity.*
 import javax.inject.Inject
@@ -51,7 +52,13 @@ class TopNewsActivity : AppCompatActivity() {
     private fun setupNewsList() {
         newsList.addItemDecoration(DividerItemDecoration(this, VERTICAL))
 
-        topNewsAdapter = TopNewsAdapter { logI(tag, "Click to the ${it.title}") }
+        topNewsAdapter = TopNewsAdapter {
+            logI(tag, "Click to the ${it.title}")
+            it.imageUrl?.let { imageUrl ->
+                startActivity(NewsDetails.newIntent(this, imageUrl))
+            }
+        }
+
         newsList.adapter = topNewsAdapter
     }
 }

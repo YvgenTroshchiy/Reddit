@@ -1,10 +1,10 @@
-package com.troshchii.reddit.topnews
+package com.troshchii.reddit.ui.topnews
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.troshchii.reddit.core.extensions.inflater
 import com.troshchii.reddit.databinding.NewsItemBinding
-import com.troshchii.reddit.topnews.model.News
+import com.troshchii.reddit.ui.topnews.model.News
 import java.util.*
 
 

@@ -1,6 +1,6 @@
 package com.troshchii.reddit.network
 
-import com.troshchii.reddit.topnews.model.TopNewsDto
+import com.troshchii.reddit.ui.topnews.model.TopNewsDto
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

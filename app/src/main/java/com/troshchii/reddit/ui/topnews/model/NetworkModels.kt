@@ -1,4 +1,4 @@
-package com.troshchii.reddit.topnews.model
+package com.troshchii.reddit.ui.topnews.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
