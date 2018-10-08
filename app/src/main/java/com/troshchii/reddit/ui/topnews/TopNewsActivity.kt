@@ -23,6 +23,7 @@ class TopNewsActivity : AppCompatActivity() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
 
+    //TODO: Maybe remove lateinit?
     private lateinit var viewModel: TopNewsViewModel
     private lateinit var topNewsAdapter: TopNewsAdapter
 
