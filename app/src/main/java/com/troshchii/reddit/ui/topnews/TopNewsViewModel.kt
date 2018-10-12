@@ -7,7 +7,7 @@ import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logI
 import com.troshchii.reddit.core.extensions.plusAssign
 import com.troshchii.reddit.core.functional.Either
-import com.troshchii.reddit.ui.topnews.model.News
+import com.troshchii.reddit.ui.topnews.model.RedditPost
 import com.troshchii.reddit.ui.topnews.model.toTopNews
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -19,7 +19,7 @@ class TopNewsViewModel @Inject constructor(topNewsUseCase: TopNewsUseCase) : Vie
 
     private val disposable = CompositeDisposable()
 
-    val topNews: MutableLiveData<Either<Failure, List<News>>> = MutableLiveData()
+    val topNews: MutableLiveData<Either<Failure, List<RedditPost>>> = MutableLiveData()
 
     init {
         logI(tag, "init")

@@ -4,13 +4,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.troshchii.reddit.core.extensions.inflater
 import com.troshchii.reddit.databinding.NewsItemBinding
-import com.troshchii.reddit.ui.topnews.model.News
+import com.troshchii.reddit.ui.topnews.model.RedditPost
 import java.util.*
 
 
-class TopNewsAdapter(private val itemClick: (News) -> Unit) : RecyclerView.Adapter<TopNewsAdapter.BindingHolder>() {
+class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView.Adapter<TopNewsAdapter.BindingHolder>() {
 
-    var news: List<News> = LinkedList()
+    var news: List<RedditPost> = LinkedList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -26,7 +26,7 @@ class TopNewsAdapter(private val itemClick: (News) -> Unit) : RecyclerView.Adapt
     }
 
     inner class BindingHolder(private val binding: NewsItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(news: News) {
+        fun bind(news: RedditPost) {
             binding.root.setOnClickListener { itemClick.invoke(news) }
             binding.news = news
             binding.executePendingBindings()

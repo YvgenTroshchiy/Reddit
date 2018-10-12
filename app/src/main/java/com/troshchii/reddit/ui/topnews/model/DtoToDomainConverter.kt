@@ -1,12 +1,12 @@
 package com.troshchii.reddit.ui.topnews.model
 
 
-fun TopNewsDto.toTopNews() = data.children.map { childrenToNews(it) }
+fun TopNewsDto.toTopNews() = data.children.map { childrenToRedditPost(it) }
 
-private fun childrenToNews(children: Children): News {
+private fun childrenToRedditPost(children: Children): RedditPost {
     val data = children.data
 
-    return News(
+    return RedditPost(
         // TODO: Get from resolutions
         thumbnail = data.preview?.images?.get(0)?.source?.url,
         imageUrl = data.preview?.images?.get(0)?.source?.url,

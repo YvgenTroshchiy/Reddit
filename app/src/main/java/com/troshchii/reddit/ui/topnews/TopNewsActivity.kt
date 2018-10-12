@@ -34,6 +34,7 @@ class TopNewsActivity : AppCompatActivity() {
 
         setupNewsList()
 
+        //TODO: Use 1 extention instead 2
         viewModel = viewModel(viewModelFactory)
 
         observe(viewModel.topNews) {

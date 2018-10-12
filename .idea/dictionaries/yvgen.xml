@@ -2,6 +2,7 @@
   <dictionary name="yvgen">
     <words>
       <w>gson</w>
+      <w>lateinit</w>
       <w>reddit</w>
     </words>
   </dictionary>

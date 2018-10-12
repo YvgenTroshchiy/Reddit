@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 
-@Parcelize data class News(
+@Parcelize data class RedditPost(
     val thumbnail: String?,
     val imageUrl: String?,
     val title: String,

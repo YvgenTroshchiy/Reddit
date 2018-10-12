@@ -10,7 +10,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize data class Data(
     val children: List<Children>,
-    val after: String
+    val before: String?,
+    val after: String?
 ) : Parcelable
 
 @Parcelize data class Children(
