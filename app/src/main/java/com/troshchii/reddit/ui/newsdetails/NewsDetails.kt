@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.newsdetails_activity.*
 private const val EXTRA_URL = "extra_url"
 
 private var Intent.imageUrl: String
-    get() = this.getStringExtra(EXTRA_URL)
+    get() = getStringExtra(EXTRA_URL)
     set(value) {
         putExtra(EXTRA_URL, value)
     }
