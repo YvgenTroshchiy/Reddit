@@ -28,8 +28,6 @@ android {
     dataBinding { enabled = true }
 }
 
-androidExtensions { experimental = true }
-
 ext {
     dagger_version = "2.16"
     arch_components_version = '1.1.1'
@@ -53,11 +51,11 @@ dependencies {
 
     // region Kotlin Utilities
     implementation 'org.jetbrains.anko:anko:0.10.3'
-    implementation 'androidx.core:core-ktx:1.0.0'
+    implementation 'androidx.core:core-ktx:1.0.1'
     // endregion
 
     // region Ui
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     implementation 'com.squareup.picasso:picasso:2.71828'
     // endregion
@@ -103,7 +101,7 @@ dependencies {
     // region Tests
     testImplementation 'junit:junit:4.12'
     androidTestImplementation "androidx.paging:paging-common:$paging_version"
-    androidTestImplementation 'androidx.test:runner:1.1.0-beta02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-beta02'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     // endregion
 }
