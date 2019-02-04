@@ -20,6 +20,7 @@ import kotlinx.android.parcel.Parcelize
 ) : Parcelable
 
 @Parcelize data class ChildrenData(
+    val thumbnail: String,
     val preview: Preview?,
     val title: String,
     val author: String,

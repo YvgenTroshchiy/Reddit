@@ -8,7 +8,7 @@ private fun childrenToRedditPost(children: Children): RedditPost {
 
     return RedditPost(
         // TODO: Get from resolutions
-        thumbnail = data.preview?.images?.get(0)?.source?.url,
+        thumbnail = data.thumbnail,
         imageUrl = data.preview?.images?.get(0)?.source?.url,
         title = data.title,
         author = data.author,

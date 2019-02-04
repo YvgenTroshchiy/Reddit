@@ -20,7 +20,7 @@
 
         <ImageView
             android:id="@+id/thumbnail"
-            picassoUrl="@{news.thumbnail}"
+            imageUrl="@{news.thumbnail}"
             android:layout_width="80dp"
             android:layout_height="80dp"
             app:layout_constraintBottom_toBottomOf="parent"

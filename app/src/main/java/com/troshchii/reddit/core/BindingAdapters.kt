@@ -2,16 +2,16 @@ package com.troshchii.reddit.core
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 
 
 //TODO: Set Placeholder
-@BindingAdapter("picassoUrl")
+@BindingAdapter("imageUrl")
 fun loadImageUrlWithPicasso(imageView: ImageView, url: String?) {
     if (url.isNullOrBlank()) {
         imageView.setImageDrawable(null)
     } else {
-        Picasso.get()
+        Glide.with(imageView.context)
             .load(url)
             .into(imageView)
     }
