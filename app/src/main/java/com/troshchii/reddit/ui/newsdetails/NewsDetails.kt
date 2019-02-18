@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logD
@@ -62,7 +62,7 @@ class NewsDetails : AppCompatActivity() {
 
     // TODO: Create VM. Set Placeholder
     private fun showImage() {
-        Picasso.get()
+        Glide.with(this)
             .load(intent.imageUrl)
             .into(image)
     }
@@ -71,5 +71,4 @@ class NewsDetails : AppCompatActivity() {
         finish()
         return true
     }
-
 }
