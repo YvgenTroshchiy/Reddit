@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.troshchii.reddit.ui.newsdetails.NewsDetails" />
+        <activity android:name="com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity" />
 
     </application>
 

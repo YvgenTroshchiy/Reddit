@@ -23,13 +23,13 @@ private var Intent.imageUrl: String
     }
 
 
-class NewsDetails : AppCompatActivity() {
+class NewsDetailsActivity : AppCompatActivity() {
 
-    private val tag = getLogTag<NewsDetails>()
+    private val tag = getLogTag<NewsDetailsActivity>()
 
     companion object {
         fun newIntent(context: Context, imageUrl: String): Intent {
-            return Intent(context, NewsDetails::class.java).apply {
+            return Intent(context, NewsDetailsActivity::class.java).apply {
                 this.imageUrl = imageUrl
             }
         }

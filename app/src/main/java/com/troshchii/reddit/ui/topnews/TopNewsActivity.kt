@@ -10,7 +10,7 @@ import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.core.vm.ViewModelFactory
 import com.troshchii.reddit.di.scope.ActivityScoped
-import com.troshchii.reddit.ui.newsdetails.NewsDetails
+import com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.topnews_activity.*
 import javax.inject.Inject
@@ -57,7 +57,7 @@ class TopNewsActivity : AppCompatActivity() {
         topNewsAdapter = TopNewsAdapter {
             logI(tag, "Click to the: ${it.title}, ${it.imageUrl}")
             it.imageUrl?.let { imageUrl ->
-                startActivity(NewsDetails.newIntent(this, imageUrl))
+                startActivity(NewsDetailsActivity.newIntent(this, imageUrl))
             }
         }
 
