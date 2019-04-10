@@ -56,7 +56,7 @@ dependencies {
     // endregion
 
     // region Kotlin Utilities
-    implementation 'org.jetbrains.anko:anko:0.10.3'
+    implementation 'org.jetbrains.anko:anko:0.10.8'
     implementation 'androidx.core:core-ktx:1.0.1'
     // endregion
 
