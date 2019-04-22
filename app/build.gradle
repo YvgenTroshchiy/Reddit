@@ -33,8 +33,9 @@ android {
 }
 
 ext {
-    dagger_version = "2.16"
+    koin_version = '1.0.2'
     arch_components_version = '1.1.1'
+    dagger_version = "2.16"
     leakcanary_android = '1.6.1'
     paging_version = "2.1.0"
 }
@@ -62,7 +63,7 @@ dependencies {
 
     // region Ui
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha4'
 
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
@@ -106,7 +107,15 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
+    // endregion
+
+    // region Koin
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-scope:$koin_version"
+
+    testImplementation "org.koin:koin-test:$koin_version"
+    androidTestImplementation "org.koin:koin-test:$koin_version"
     // endregion
 
     // region Tests

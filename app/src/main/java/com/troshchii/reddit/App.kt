@@ -3,8 +3,10 @@ package com.troshchii.reddit
 import com.squareup.leakcanary.LeakCanary
 import com.troshchii.reddit.core.extensions.setStrictMode
 import com.troshchii.reddit.di.DaggerAppComponent
+import com.troshchii.reddit.di.koin.appModule
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
+import org.koin.android.ext.android.startKoin
 
 
 class App : DaggerApplication() {
@@ -16,12 +18,12 @@ class App : DaggerApplication() {
         if (BuildConfig.DEBUG) setStrictMode()
         super.onCreate()
 
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            return
+        when {
+            LeakCanary.isInAnalyzerProcess(this) -> return
+            else -> LeakCanary.install(this)
         }
-        LeakCanary.install(this)
-    }
 
+
+        startKoin(this, listOf(appModule))
+    }
 }
