@@ -13,6 +13,6 @@ private fun childrenToRedditPost(children: Children): RedditPost {
         title = data.title,
         author = data.author,
         created_utc = data.created_utc,
-        num_comments = data.num_comments
+        numComments = data.num_comments
     )
 }

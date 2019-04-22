@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
 import com.bumptech.glide.Glide
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.getLogTag
@@ -62,8 +63,9 @@ class NewsDetailsActivity : AppCompatActivity() {
 
     // TODO: Create VM. Set Placeholder
     private fun showImage() {
+        val url = HtmlCompat.fromHtml(intent.imageUrl, HtmlCompat.FROM_HTML_MODE_LEGACY)
         Glide.with(this)
-            .load(intent.imageUrl)
+            .load(url.toString())
             .into(image)
     }
 
