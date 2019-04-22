@@ -25,7 +25,7 @@ import kotlinx.android.parcel.Parcelize
     val title: String,
     val author: String,
     val created_utc: String,
-    val num_comments: String
+    val numComments: String
 ) : Parcelable
 
 @Parcelize data class Preview(

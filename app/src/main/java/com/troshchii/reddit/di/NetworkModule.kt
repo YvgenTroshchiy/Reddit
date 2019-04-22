@@ -1,6 +1,7 @@
 package com.troshchii.reddit.di
 
 import android.content.Context
+import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.troshchii.reddit.BuildConfig
@@ -21,7 +22,7 @@ import javax.inject.Singleton
 
 @Module class NetworkModule {
 
-    private val timeout = 15L
+    private val timeout = 30L
 
     @Provides
     @Singleton
@@ -56,6 +57,6 @@ import javax.inject.Singleton
     @Singleton
     fun cacheFile(context: Context): File = File(context.cacheDir, "okhttp_cache")
 
-    @Provides fun gson(): Gson = GsonBuilder().create()
+    @Provides fun gson(): Gson = GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
 
 }
