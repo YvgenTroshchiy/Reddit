@@ -23,7 +23,6 @@ class App : DaggerApplication() {
             else -> LeakCanary.install(this)
         }
 
-
         startKoin(this, listOf(appModule))
     }
 }
