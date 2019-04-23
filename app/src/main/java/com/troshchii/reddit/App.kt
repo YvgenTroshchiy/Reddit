@@ -6,7 +6,9 @@ import com.troshchii.reddit.di.DaggerAppComponent
 import com.troshchii.reddit.di.koin.appModule
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
-import org.koin.android.ext.android.startKoin
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 
 class App : DaggerApplication() {
@@ -23,6 +25,10 @@ class App : DaggerApplication() {
             else -> LeakCanary.install(this)
         }
 
-        startKoin(this, listOf(appModule))
+        startKoin {
+            androidLogger()
+            androidContext(this@App)
+            modules(appModule)
+        }
     }
 }
