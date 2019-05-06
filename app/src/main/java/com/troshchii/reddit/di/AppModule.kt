@@ -12,9 +12,11 @@ By using Dagger Android we do not need to pass our Application instance to any m
 we simply need to expose our Application as Context.
 One of the advantages of Dagger.Android is that your
 Application & Activities are provided into your graph for you.
+[AppComponent].
  */
 @Module abstract class AppModule {
 
+    // Expose Application as an injectable context
     @Binds abstract fun context(application: Application): Context
 
 }
