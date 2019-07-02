@@ -33,10 +33,9 @@ android {
 }
 
 ext {
-    koin_version = '2.0.0-rc-2'
+    koin_version = '2.0.1'
     arch_components_version = '1.1.1'
-    dagger_version = "2.16"
-    leakcanary_android = '1.6.1'
+    leakcanary_android = '1.6.3'
     paging_version = "2.1.0"
 }
 
@@ -58,12 +57,12 @@ dependencies {
 
     // region Kotlin Utilities
     implementation 'org.jetbrains.anko:anko:0.10.8'
-    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation 'androidx.core:core-ktx:1.0.2'
     // endregion
 
     // region Ui
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
@@ -81,15 +80,6 @@ dependencies {
     implementation "androidx.paging:paging-rxjava2:$paging_version"
     // endregion
 
-    // region Dagger
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-
-    implementation "com.google.dagger:dagger-android:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
-    // endregion
-
     // region Development dependencies
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary_android"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary_android"
@@ -105,7 +95,7 @@ dependencies {
     // region Net
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
     // endregion
@@ -121,9 +111,7 @@ dependencies {
     // region Tests
     testImplementation 'junit:junit:4.12'
     androidTestImplementation "androidx.paging:paging-common:$paging_version"
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-
-    kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     // endregion
 }
