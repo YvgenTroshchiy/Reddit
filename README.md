@@ -23,6 +23,7 @@ Top news|News details
     * ViewModel
     * LiveData
 * DataBinding
-* Android Dagger 2
+* Android Dagger 2 / Koin 2
+* Coroutines
 * Rxjava 2
 * Retrofit
