@@ -10,10 +10,9 @@ import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.ui.topnews.model.RedditPost
 import com.troshchii.reddit.ui.topnews.model.toTopNews
 import io.reactivex.disposables.CompositeDisposable
-import javax.inject.Inject
 
 
-class TopNewsViewModel @Inject constructor(topNewsUseCase: TopNewsUseCase) : ViewModel() {
+class TopNewsViewModel constructor(topNewsUseCase: TopNewsUseCase) : ViewModel() {
 
     private val tag = getLogTag<TopNewsViewModel>()
 

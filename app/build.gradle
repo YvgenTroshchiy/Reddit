@@ -1,8 +1,8 @@
 apply {
     plugin 'com.android.application'
     plugin 'kotlin-android'
-    plugin 'kotlin-kapt'
     plugin 'kotlin-android-extensions'
+    plugin 'kotlin-kapt'
 }
 
 android {
@@ -106,7 +106,8 @@ dependencies {
 
     // region Koin
     implementation "org.koin:koin-android:$koin_version"
-    implementation "org.koin:koin-android-scope:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
     testImplementation "org.koin:koin-test:$koin_version"
     androidTestImplementation "org.koin:koin-test:$koin_version"

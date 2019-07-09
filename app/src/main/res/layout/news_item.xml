@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -40,8 +39,7 @@
             app:layout_constraintStart_toEndOf="@+id/thumbnail"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="Two brothers were rescued and treated at different NGOs. The reaction when they are reunited is priceless!"
-            />
+            tools:text="Two brothers were rescued and treated at different NGOs. The reaction when they are reunited is priceless!" />
         <!--tools:text="Two brothers were rescued" -->
 
         <TextView
