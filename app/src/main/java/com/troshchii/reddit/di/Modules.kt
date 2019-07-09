@@ -7,7 +7,7 @@ import org.koin.dsl.module
 
 
 val viewModelModule = module {
-    viewModel { TopNewsViewModel(get(), get()) }
+    viewModel { TopNewsViewModel(get()) }
 }
 
 val useCaseModule = module {
