@@ -7,10 +7,9 @@ import com.troshchii.reddit.core.extensions.transformer
 import com.troshchii.reddit.network.RedditService
 import com.troshchii.reddit.ui.topnews.model.TopNewsDto
 import io.reactivex.Single
-import javax.inject.Inject
 
 
-class TopNewsUseCase @Inject constructor(
+class TopNewsUseCase constructor(
     // TODO: Add Repository
     private val service: RedditService
 ) : UseCase() {

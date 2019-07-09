@@ -37,6 +37,8 @@ ext {
     arch_components_version = '1.1.1'
     leakcanary_android = '1.6.3'
     paging_version = "2.1.0"
+    coroutineVersion = "1.2.1"
+    lifecycle_version = "2.0.0"
 }
 
 kapt {
@@ -52,25 +54,31 @@ androidExtensions { experimental = true }
 dependencies {
     // region General
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // endregion
+
+    // region Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
     // endregion
 
     // region Kotlin Utilities
     implementation 'org.jetbrains.anko:anko:0.10.8'
+    // endregion
+
+    // region Androidx
     implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    implementation "android.arch.lifecycle:extensions:$arch_components_version"
+    implementation "android.arch.lifecycle:reactivestreams:$arch_components_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     // endregion
 
     // region Ui
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
-
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
-    // endregion
-
-    // region Android Arch
-    implementation "android.arch.lifecycle:extensions:$arch_components_version"
-    implementation "android.arch.lifecycle:reactivestreams:$arch_components_version"
     // endregion
 
     // region RxJava
@@ -88,11 +96,7 @@ dependencies {
     debugImplementation "com.squareup.leakcanary:leakcanary-support-fragment:$leakcanary_android"
     // endregion
 
-    // region Other
-    implementation "androidx.paging:paging-runtime:$paging_version"
-    // endregion
-
-    // region Net
+    // region Network
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
@@ -113,5 +117,6 @@ dependencies {
     androidTestImplementation "androidx.paging:paging-common:$paging_version"
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
     // endregion
 }

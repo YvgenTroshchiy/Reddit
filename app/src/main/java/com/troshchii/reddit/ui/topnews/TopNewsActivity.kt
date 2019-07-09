@@ -9,14 +9,10 @@ import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.core.vm.ViewModelFactory
-import com.troshchii.reddit.di.scope.ActivityScoped
 import com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity
-import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.topnews_activity.*
-import javax.inject.Inject
 
 
-@ActivityScoped
 class TopNewsActivity : AppCompatActivity() {
 
     private val tag = getLogTag<TopNewsActivity>()
@@ -28,7 +24,6 @@ class TopNewsActivity : AppCompatActivity() {
     private lateinit var topNewsAdapter: TopNewsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.topnews_activity)
 
