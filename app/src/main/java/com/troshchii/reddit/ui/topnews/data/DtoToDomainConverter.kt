@@ -1,4 +1,4 @@
-package com.troshchii.reddit.ui.topnews.model
+package com.troshchii.reddit.ui.topnews.data
 
 
 fun TopNewsDto.toTopNews() = data.children.map { childrenToRedditPost(it) }

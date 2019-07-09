@@ -3,7 +3,7 @@ package com.troshchii.reddit
 import android.app.Application
 import com.squareup.leakcanary.LeakCanary
 import com.troshchii.reddit.core.extensions.setStrictMode
-import com.troshchii.reddit.di.koin.allAppModules
+import com.troshchii.reddit.di.allAppModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

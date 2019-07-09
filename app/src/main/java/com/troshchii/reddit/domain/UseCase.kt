@@ -1,4 +1,4 @@
-package com.troshchii.reddit.core
+package com.troshchii.reddit.domain
 
 
 //TODO: Update

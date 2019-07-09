@@ -1,7 +1,7 @@
 package com.troshchii.reddit.ui.topnews.pading
 
 import androidx.paging.PageKeyedDataSource
-import com.troshchii.reddit.ui.topnews.model.RedditPost
+import com.troshchii.reddit.ui.topnews.data.RedditPost
 
 
 class RedditDataSource : PageKeyedDataSource<String, RedditPost>() {

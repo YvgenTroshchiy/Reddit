@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.troshchii.reddit.core.extensions.inflater
 import com.troshchii.reddit.databinding.NewsItemBinding
-import com.troshchii.reddit.ui.topnews.model.RedditPost
+import com.troshchii.reddit.ui.topnews.data.RedditPost
 import java.util.*
 
 
