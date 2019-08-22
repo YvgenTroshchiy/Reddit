@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "612664871478",
+    "firebase_url": "https://reddit-5adee.firebaseio.com",
+    "project_id": "reddit-5adee",
+    "storage_bucket": "reddit-5adee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612664871478:android:cae632b532b669e4",
+        "android_client_info": {
+          "package_name": "com.troshchii.reddit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612664871478-n0751hk977cn92v1a6sr7g1uddkjjppi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeyUWdUzROT-bKfmlsdKe3bkTAf040OjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612664871478-n0751hk977cn92v1a6sr7g1uddkjjppi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

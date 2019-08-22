@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.troshchii.reddit">
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
@@ -27,5 +24,11 @@
         <activity android:name="com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity" />
 
     </application>
+
+    <meta-data
+        android:name="io.fabric.ApiKey"
+        android:value="4467d3e10f180582b93bf063b12c45269f02c3fc" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
