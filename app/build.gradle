@@ -36,7 +36,6 @@ android {
 ext {
     koin_version = '2.0.1'
     arch_components_version = '1.1.1'
-    leakcanary_android = '1.6.3'
     paging_version = "2.1.0"
     coroutineVersion = "1.2.1"
     lifecycle_version = "2.0.0"
@@ -68,7 +67,7 @@ dependencies {
     // endregion
 
     // region Androidx
-    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
@@ -90,11 +89,7 @@ dependencies {
     // endregion
 
     // region Development dependencies
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary_android"
-    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary_android"
-
-    // Optional, if you use support library fragments:
-    debugImplementation "com.squareup.leakcanary:leakcanary-support-fragment:$leakcanary_android"
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-3'
     // endregion
 
     // region Network
