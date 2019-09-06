@@ -30,4 +30,5 @@ class App : Application() {
 
         Fabric.with(this, Crashlytics())
     }
+
 }
