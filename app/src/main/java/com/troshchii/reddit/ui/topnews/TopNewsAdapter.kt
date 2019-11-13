@@ -13,7 +13,13 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
 
     var news: List<RedditPost> = LinkedList()
         set(value) {
+            val diffCallback = RedditPostDiffCallback(field, value);
+            val diffResult = DiffUtil.calculateDiff(diffCallback);
+
             field = value
+
+            diffResult.dispatchUpdatesTo(this);
+
             notifyDataSetChanged()
         }
 
