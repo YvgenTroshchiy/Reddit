@@ -25,7 +25,6 @@ private const val TIMEOUT = 30L
 
 
 val networkModule = module {
-
     single { redditService(get()) }
 
     single { retrofit(get(), get()) }

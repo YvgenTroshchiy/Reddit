@@ -1,6 +1,7 @@
 package com.troshchii.reddit.ui.topnews
 
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.troshchii.reddit.core.extensions.inflater
 import com.troshchii.reddit.databinding.NewsItemBinding
@@ -30,6 +31,23 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
             binding.root.setOnClickListener { itemClick.invoke(news) }
             binding.news = news
             binding.executePendingBindings()
+        }
+    }
+
+    class RedditPostDiffCallback(
+        private val old: List<RedditPost>,
+        private val new: List<RedditPost>
+    ) : DiffUtil.Callback() {
+
+        override fun getOldListSize() = old.size
+        override fun getNewListSize() = new.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return old[oldItemPosition].id == new[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return old[oldItemPosition] == new[newItemPosition]
         }
     }
 }

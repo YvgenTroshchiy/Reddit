@@ -8,6 +8,7 @@ import kotlinx.android.parcel.Parcelize
     val data: Data
 ) : Parcelable
 
+// ListingData
 @Parcelize data class Data(
     val children: List<Children>,
     val before: String?,
@@ -19,7 +20,9 @@ import kotlinx.android.parcel.Parcelize
     val data: ChildrenData
 ) : Parcelable
 
+// RedditPost
 @Parcelize data class ChildrenData(
+    val id: String,
     val thumbnail: String,
     val preview: Preview?,
     val title: String,

@@ -7,6 +7,7 @@ private fun childrenToRedditPost(children: Children): RedditPost {
     val data = children.data
 
     return RedditPost(
+        id = data.id,
         // TODO: Get from resolutions
         thumbnail = data.thumbnail,
         imageUrl = data.preview?.images?.get(0)?.source?.url,
