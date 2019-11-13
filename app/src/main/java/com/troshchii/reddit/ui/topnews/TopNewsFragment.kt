@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.functional.Either
+import com.troshchii.reddit.databinding.TopnewsFragmentBinding
 import com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity
-import kotlinx.android.synthetic.main.topnews_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -19,6 +18,7 @@ class TopNewsFragment : Fragment() {
 
     private val logTag = getLogTag<TopNewsFragment>()
 
+    private lateinit var binding: TopnewsFragmentBinding
     private val viewModel: TopNewsViewModel by viewModel()
 
     private lateinit var topNewsAdapter: TopNewsAdapter
@@ -30,7 +30,8 @@ class TopNewsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         logI(logTag, "onCreateView")
-        return inflater.inflate(R.layout.topnews_fragment, container, false)
+        binding = TopnewsFragmentBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -53,7 +54,7 @@ class TopNewsFragment : Fragment() {
     }
 
     private fun setupNewsList() {
-        newsList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        binding.newsList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         topNewsAdapter = TopNewsAdapter {
             logI(logTag, "Click to the: ${it.title}, ${it.imageUrl}")
@@ -62,6 +63,6 @@ class TopNewsFragment : Fragment() {
             }
         }
 
-        newsList.adapter = topNewsAdapter
+        binding.newsList.adapter = topNewsAdapter
     }
 }
