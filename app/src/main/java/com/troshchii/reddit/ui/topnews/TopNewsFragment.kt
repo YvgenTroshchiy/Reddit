@@ -30,12 +30,13 @@ class TopNewsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         logI(logTag, "onCreateView")
-        binding = TopnewsFragmentBinding.inflate(inflater)
+        binding = TopnewsFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        logI(logTag, "onActivityCreated")
 
         setupNewsList()
 
