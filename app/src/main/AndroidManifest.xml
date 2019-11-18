@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.troshchii.reddit">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -13,7 +15,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name="com.troshchii.reddit.ui.topnews.TopNewsActivity">
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="4467d3e10f180582b93bf063b12c45269f02c3fc" />
+
+        <activity android:name=".ui.topnews.TopNewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,14 +27,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity" />
+        <activity android:name=".ui.newsdetails.NewsDetailsActivity" />
 
     </application>
-
-    <meta-data
-        android:name="io.fabric.ApiKey"
-        android:value="4467d3e10f180582b93bf063b12c45269f02c3fc" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

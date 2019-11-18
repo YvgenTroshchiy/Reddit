@@ -13,14 +13,9 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
 
     var news: List<RedditPost> = LinkedList()
         set(value) {
-            val diffCallback = RedditPostDiffCallback(field, value);
-            val diffResult = DiffUtil.calculateDiff(diffCallback);
-
+            val diffResult = DiffUtil.calculateDiff(RedditPostDiffCallback(field, value));
             field = value
-
             diffResult.dispatchUpdatesTo(this);
-
-            notifyDataSetChanged()
         }
 
     override fun getItemCount() = news.size
