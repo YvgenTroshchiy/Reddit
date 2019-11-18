@@ -6,8 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.troshchii.reddit.core.extensions.*
+import com.troshchii.reddit.core.extensions.getLogTag
+import com.troshchii.reddit.core.extensions.logI
+import com.troshchii.reddit.core.extensions.logW
+import com.troshchii.reddit.core.extensions.toast
 import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
 import com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity
@@ -40,18 +44,18 @@ class TopNewsFragment : Fragment() {
 
         setupNewsList()
 
-        viewLifecycleOwner.observe(viewModel.topNews) {
+        viewModel.topNews.observe(this, Observer {
             when (it) {
                 is Either.Left -> {
                     logW(logTag, "Error: $it")
-                    context!!.toast("it", Toast.LENGTH_LONG)
+                    context?.toast("it", Toast.LENGTH_LONG)
                 }
                 is Either.Right -> {
                     logI(logTag, "Success")
-                    topNewsAdapter.news = it.right
+                    topNewsAdapter.submitList(it.right)
                 }
             }
-        }
+        })
     }
 
     private fun setupNewsList() {
