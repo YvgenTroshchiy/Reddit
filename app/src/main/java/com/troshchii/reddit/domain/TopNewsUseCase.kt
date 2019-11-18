@@ -9,14 +9,14 @@ import com.troshchii.reddit.ui.topnews.data.RedditPost
 import com.troshchii.reddit.ui.topnews.data.toTopNews
 
 
-class TopNewsUseCase(private val service: RedditService) : UseCase() {
+class TopNewsUseCase(private val service: RedditService) : UseCase<Either<Failure, List<RedditPost>>, Int>() {
 
     private val tag = getLogTag<TopNewsUseCase>()
 
-    override suspend fun execute(): Either<Failure, List<RedditPost>> {
+    override suspend fun execute(params: Int): Either<Failure, List<RedditPost>> {
         logI(tag, "execute")
 
-        val result = service.topNews(100)
+        val result = service.topNews(params)
 
         return if (result.isSuccessful && result.body() != null) {
             Either.Right(result.body()!!.toTopNews())
