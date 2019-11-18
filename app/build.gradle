@@ -80,6 +80,7 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$arch_components_version"
     implementation "android.arch.lifecycle:reactivestreams:$arch_components_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation 'androidx.cardview:cardview:1.0.0'
     // endregion
 
     // region Ui

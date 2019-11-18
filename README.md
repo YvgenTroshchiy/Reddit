@@ -12,6 +12,8 @@ Top news|News details
 ## TODO
 - [ ] Save image to the gallery
 - [ ] Pagination
+- [ ] Pagination library
+- [ ] Add card view
 - [ ] Image placeholder
 - [ ] Empty state for adapter
 - [ ] Modularization

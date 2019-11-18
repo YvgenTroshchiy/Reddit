@@ -49,7 +49,9 @@ task logTask {
     gradleProperties.load(new FileInputStream(gradlePropertiesFile))
     def isCanary = gradleProperties['canary']
 
-    print("isCanary: $isCanary")
+    def android_gradle_plugin = (isCanary ? '4.0.0-alpha02' : '3.5.2')
+
+    print("android_gradle_plugin: $android_gradle_plugin")
 }
 
 //When there is an error in code generation you will may see
