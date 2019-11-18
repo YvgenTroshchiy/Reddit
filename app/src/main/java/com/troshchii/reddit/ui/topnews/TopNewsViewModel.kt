@@ -6,7 +6,7 @@ import com.troshchii.reddit.core.exception.Failure
 import com.troshchii.reddit.core.extensions.logI
 import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.domain.TopNewsUseCase
-import com.troshchii.reddit.ui.BaseViewModel
+import com.troshchii.reddit.core.BaseViewModel
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import kotlinx.coroutines.launch
 

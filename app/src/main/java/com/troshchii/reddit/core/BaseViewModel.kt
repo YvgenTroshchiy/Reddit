@@ -1,4 +1,4 @@
-package com.troshchii.reddit.ui
+package com.troshchii.reddit.core
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
