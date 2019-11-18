@@ -4,6 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 
+// ListingResponse
 @Parcelize data class TopNewsDto(
     val data: Data
 ) : Parcelable
@@ -15,6 +16,7 @@ import kotlinx.android.parcel.Parcelize
     val after: String?
 ) : Parcelable
 
+// RedditChildrenResponse
 @Parcelize data class Children(
     val kind: String,
     val data: ChildrenData

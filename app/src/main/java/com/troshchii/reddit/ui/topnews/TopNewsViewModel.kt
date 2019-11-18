@@ -12,20 +12,21 @@ import com.troshchii.reddit.ui.topnews.data.RedditPost
 import com.troshchii.reddit.ui.topnews.pading.RedditDataSourceFactory
 
 
-typealias TopNewsUiData = LiveData<Either<Failure, PagedList<RedditPost>>>
+typealias TopNewsUiData = Either<Failure, PagedList<RedditPost>>
 
+const val PAGE_SIZE = 20
 
 class TopNewsViewModel(
     redditDataSourceFactory: RedditDataSourceFactory
 ) : BaseViewModel() {
 
-    var topNews: TopNewsUiData = MutableLiveData()
+    var topNews: LiveData<TopNewsUiData> = MutableLiveData()
 
     init {
         logI(tag, "init")
 
         val config = PagedList.Config.Builder()
-            .setPageSize(20)
+            .setPageSize(PAGE_SIZE)
             .setInitialLoadSizeHint(30) // default: page size * 3
             .setPrefetchDistance(10) // default: page size
             .setEnablePlaceholders(true) // default: true

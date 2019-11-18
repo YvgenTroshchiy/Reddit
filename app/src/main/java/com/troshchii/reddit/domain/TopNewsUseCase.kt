@@ -9,6 +9,7 @@ import com.troshchii.reddit.ui.topnews.data.RedditPost
 import com.troshchii.reddit.ui.topnews.data.toTopNews
 
 
+/*
 class TopNewsUseCase(private val service: RedditService) : UseCase<Either<Failure, List<RedditPost>>, Int>() {
 
     private val tag = getLogTag<TopNewsUseCase>()
@@ -24,4 +25,4 @@ class TopNewsUseCase(private val service: RedditService) : UseCase<Either<Failur
             Either.Left(Failure.ServerError(message = result.message()))
         }
     }
-}
+}*/
