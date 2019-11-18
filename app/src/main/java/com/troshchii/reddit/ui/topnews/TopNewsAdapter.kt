@@ -1,30 +1,31 @@
 package com.troshchii.reddit.ui.topnews
 
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.troshchii.reddit.core.extensions.inflater
 import com.troshchii.reddit.databinding.NewsItemBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
-import java.util.*
 
 
-class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView.Adapter<TopNewsAdapter.BindingHolder>() {
+class TopNewsAdapter(
+    private val itemClick: (RedditPost) -> Unit
+) : PagedListAdapter<RedditPost, TopNewsAdapter.BindingHolder>(diffCallback) {
 
-    var news: List<RedditPost> = LinkedList()
-        set(value) {
-            val diffResult = DiffUtil.calculateDiff(RedditPostDiffCallback(field, value));
-            field = value
-            diffResult.dispatchUpdatesTo(this);
+    companion object {
+        private val diffCallback = object : DiffUtil.ItemCallback<RedditPost>() {
+            override fun areItemsTheSame(oldItem: RedditPost, newItem: RedditPost) = (oldItem.id == newItem.id)
+
+            override fun areContentsTheSame(oldItem: RedditPost, newItem: RedditPost) = (oldItem == newItem)
         }
-
-    override fun getItemCount() = news.size
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         BindingHolder(NewsItemBinding.inflate(parent.context.inflater(), parent, false))
 
     override fun onBindViewHolder(holder: BindingHolder, position: Int) {
-        holder.bind(news[position])
+        getItem(position)?.let { holder.bind(it) }
     }
 
     inner class BindingHolder(private val binding: NewsItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -32,23 +33,6 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
             binding.root.setOnClickListener { itemClick.invoke(news) }
             binding.news = news
             binding.executePendingBindings()
-        }
-    }
-
-    class RedditPostDiffCallback(
-        private val old: List<RedditPost>,
-        private val new: List<RedditPost>
-    ) : DiffUtil.Callback() {
-
-        override fun getOldListSize() = old.size
-        override fun getNewListSize() = new.size
-
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return old[oldItemPosition].id == new[newItemPosition].id
-        }
-
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return old[oldItemPosition] == new[newItemPosition]
         }
     }
 }

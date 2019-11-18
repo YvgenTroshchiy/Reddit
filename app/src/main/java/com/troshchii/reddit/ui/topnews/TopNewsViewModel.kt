@@ -2,26 +2,35 @@ package com.troshchii.reddit.ui.topnews
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import com.troshchii.reddit.core.BaseViewModel
 import com.troshchii.reddit.core.exception.Failure
 import com.troshchii.reddit.core.extensions.logI
 import com.troshchii.reddit.core.functional.Either
-import com.troshchii.reddit.domain.TopNewsUseCase
-import com.troshchii.reddit.core.BaseViewModel
 import com.troshchii.reddit.ui.topnews.data.RedditPost
-import kotlinx.coroutines.launch
+import com.troshchii.reddit.ui.topnews.pading.RedditDataSourceFactory
 
 
-class TopNewsViewModel constructor(private val topNewsUseCase: TopNewsUseCase) : BaseViewModel() {
+typealias TopNewsUiData = LiveData<Either<Failure, PagedList<RedditPost>>>
 
-    val topNews: LiveData<Either<Failure, List<RedditPost>>> = MutableLiveData()
+
+class TopNewsViewModel(
+    redditDataSourceFactory: RedditDataSourceFactory
+) : BaseViewModel() {
+
+    var topNews: TopNewsUiData = MutableLiveData()
 
     init {
         logI(tag, "init")
 
-        loadTopNews()
-    }
+        val config = PagedList.Config.Builder()
+            .setPageSize(20)
+            .setInitialLoadSizeHint(30) // default: page size * 3
+            .setPrefetchDistance(10) // default: page size
+            .setEnablePlaceholders(true) // default: true
+            .build()
 
-    private fun loadTopNews() {
-        launch { topNews.postUpdate(topNewsUseCase.execute()) }
+        topNews = LivePagedListBuilder(redditDataSourceFactory, config).build()
     }
 }
