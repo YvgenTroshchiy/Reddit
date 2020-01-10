@@ -42,7 +42,7 @@ android {
 ext {
     koin_version = '2.0.1'
     arch_components_version = '1.1.1'
-    paging_version = "2.1.0"
+    paging_version = "2.1.1"
     coroutineVersion = "1.2.1"
     lifecycle_version = "2.1.0"
 }
@@ -76,7 +76,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation "androidx.paging:paging-runtime:$paging_version"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
     implementation "android.arch.lifecycle:extensions:$arch_components_version"
     implementation "android.arch.lifecycle:reactivestreams:$arch_components_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
