@@ -45,6 +45,7 @@ ext {
     paging_version = "2.1.1"
     coroutineVersion = "1.2.1"
     lifecycle_version = "2.1.0"
+    arrow_version = "0.10.4"
 }
 
 kapt {
@@ -73,7 +74,7 @@ dependencies {
     // endregion
 
     // region Androidx
-    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
@@ -116,9 +117,15 @@ dependencies {
     androidTestImplementation "org.koin:koin-test:$koin_version"
     // endregion
 
+    // region Arrow
+    implementation "io.arrow-kt:arrow-core:$arrow_version"
+    implementation "io.arrow-kt:arrow-syntax:$arrow_version"
+    kapt "io.arrow-kt:arrow-meta:$arrow_version"
+    // endregion
+
     // region Firebase
-    implementation 'com.google.firebase:firebase-core:17.2.1'
-    implementation 'com.google.firebase:firebase-analytics:17.2.1'
+    implementation 'com.google.firebase:firebase-core:17.2.2'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
     // endregion
 
