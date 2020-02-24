@@ -56,7 +56,7 @@ task logTask {
     def gradleProperties = new Properties()
     def gradlePropertiesFile = rootProject.file('.gradle/gradle.properties')
 
-    def isCanary = { ->
+    def isCanary = {
         if (!gradlePropertiesFile.isFile()) return false
 
         gradleProperties.load(new FileInputStream(gradlePropertiesFile))
