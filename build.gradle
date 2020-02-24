@@ -2,7 +2,7 @@
 
 buildscript {
     // Add `canary=true` in ~/.gradle/gradle.properties
-    def isCanary = {
+    def isCanary = { ->
         def gradleProperties = new Properties()
         def gradlePropertiesFile = rootProject.file('.gradle/gradle.properties')
 
@@ -49,23 +49,31 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-//TODO: for debug. delete
+//TODO: for debug
 task logTask {
+    println("--------------------------------")
+
     def gradleProperties = new Properties()
     def gradlePropertiesFile = rootProject.file('.gradle/gradle.properties')
 
-    def isCanary = {
-        if (gradlePropertiesFile != null) {
-            gradleProperties.load(new FileInputStream(gradlePropertiesFile))
-            return gradleProperties['canary']
+    def isCanary = { ->
+        if (!gradlePropertiesFile.isFile()) return false
+
+        gradleProperties.load(new FileInputStream(gradlePropertiesFile))
+        def canaryProperty = gradleProperties['canary']
+        println("canaryProperty: $canaryProperty")
+
+        if (canaryProperty != null && !canaryProperty.isEmpty()) {
+            return canaryProperty.toBoolean()
         } else {
             return false
         }
     }
 
-    def android_gradle_plugin = (isCanary ? 'some canary version' : 'some stable version')
+    def android_gradle_plugin = (isCanary() ? 'some CANARY version' : 'some STABLE version')
 
-    print("android_gradle_plugin: $android_gradle_plugin")
+    println("Version: $android_gradle_plugin")
+    println("--------------------------------")
 }
 
 //When there is an error in code generation you will may see
