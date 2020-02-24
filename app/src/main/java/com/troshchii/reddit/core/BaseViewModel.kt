@@ -33,6 +33,10 @@ abstract class BaseViewModel(
         (this as MutableLiveData).postValue(value)
     }
 
+    protected fun <T> LiveData<Event<T>>.postEvent(value: T) {
+        (this as MutableLiveData).postValue(Event(value))
+    }
+
     override fun onCleared() {
         logI(tag, "onCleared")
         coroutineContext.cancel()
