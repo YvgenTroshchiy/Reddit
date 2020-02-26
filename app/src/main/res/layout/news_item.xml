@@ -10,6 +10,7 @@
             type="com.troshchii.reddit.ui.topnews.data.RedditPost" />
     </data>
 
+    <!-- Change it to Card layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
