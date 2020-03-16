@@ -125,8 +125,8 @@ dependencies {
     // endregion
 
     // region Firebase
-    implementation 'com.google.firebase:firebase-core:17.2.2'
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-core:17.2.3'
+    implementation 'com.google.firebase:firebase-analytics:17.2.3'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
     // endregion
 

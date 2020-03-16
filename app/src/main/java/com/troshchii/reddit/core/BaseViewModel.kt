@@ -39,6 +39,6 @@ abstract class BaseViewModel(
 
     override fun onCleared() {
         logI(tag, "onCleared")
-        coroutineContext.cancel()
+        cancel()
     }
 }

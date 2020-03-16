@@ -13,6 +13,7 @@ Top news|News details
 - [ ] Save image to the gallery
 - [ ] Pagination
 - [ ] Pagination library
+- [ ] Navigation library
 - [ ] Add card view
 - [ ] Image placeholder
 - [ ] Empty state for adapter
