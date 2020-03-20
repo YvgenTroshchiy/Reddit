@@ -10,7 +10,9 @@ Top news|News details
 * Rotation support
 
 ## TODO
+- [ ] Play gif animation
 - [ ] Save image to the gallery
+- [ ] Room
 - [ ] Pagination
 - [ ] Pagination library
 - [ ] Navigation library
@@ -25,9 +27,11 @@ Top news|News details
 * Android architecture components
     * ViewModel
     * LiveData
-* DataBinding
-* View Binding
-* Android Dagger 2 / Koin 2
+* DataBinding / ViewBinding
+* Koin 2
 * Coroutines
-* Rxjava 2
 * Retrofit
+
+#### (In other branch)
+* Android Dagger 2
+* Rxjava 2
