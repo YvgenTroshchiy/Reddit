@@ -3,7 +3,8 @@ package com.troshchii.reddit.ui.topnews.data
 
 fun TopNewsDto.toTopNews() = data.children.map { childrenToRedditPost(it) }
 
-private fun childrenToRedditPost(children: Children): RedditPost {
+
+private fun childrenToRedditPost(children: TopNewsDto.Data.Children): RedditPost {
     val data = children.data
 
     return RedditPost(
