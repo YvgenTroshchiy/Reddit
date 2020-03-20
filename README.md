@@ -6,17 +6,18 @@ Top news|News details
 
 ## Features
 * Load top news from Reddit
+* Play gif animation in thumbnails
 * Show full image
 * Rotation support
 
 ## TODO
-- [ ] Play gif animation
+- [ ] Add card view
 - [ ] Save image to the gallery
+- [ ] Play gif animation on details
 - [ ] Room
 - [ ] Pagination
 - [ ] Pagination library
 - [ ] Navigation library
-- [ ] Add card view
 - [ ] Image placeholder
 - [ ] Empty state for adapter
 - [ ] Modularization
