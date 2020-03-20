@@ -28,7 +28,8 @@ import kotlinx.android.parcel.Parcelize
                 val title: String,
                 val author: String,
                 val created_utc: String,
-                val numComments: String
+                val numComments: String,
+                val media: Media
             ) : Parcelable {
 
                 @Parcelize data class Preview(
@@ -59,6 +60,28 @@ import kotlinx.android.parcel.Parcelize
                         val hls_url: String,
                         val is_gif: Boolean,
                         val transcoding_status: String
+                    ) : Parcelable
+                }
+
+                @Parcelize data class Media(
+                    val oembed: Oembed,
+                    val type: String
+                ) : Parcelable {
+
+                    @Parcelize data class Oembed(
+                        val providerUrl: String,
+                        val description: String,
+                        val title: String,
+                        val authorName: String,
+                        val height: Int,
+                        val width: Int,
+                        val html: String,
+                        val thumbnailWidth: Int,
+                        val version: String,
+                        val providerName: String,
+                        val thumbnailUrl: String,
+                        val type: String,
+                        val thumbnailHeight: Int
                     ) : Parcelable
                 }
             }
