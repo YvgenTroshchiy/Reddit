@@ -5,11 +5,10 @@ import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize data class TopNewsDto(
-    val data: Data
+    val data: ListingData
 ) : Parcelable {
 
-    // ListingData
-    @Parcelize data class Data(
+    @Parcelize data class ListingData(
         val modhash: String,
         val dist: Int,
         val children: List<Children>,
@@ -19,11 +18,10 @@ import kotlinx.android.parcel.Parcelize
 
         @Parcelize data class Children(
             val kind: String,
-            val data: ChildrenData
+            val data: RedditPost
         ) : Parcelable {
 
-            // RedditPost
-            @Parcelize data class ChildrenData(
+            @Parcelize data class RedditPost(
                 val id: String,
                 val thumbnail: String,
                 val preview: Preview?,
@@ -35,6 +33,7 @@ import kotlinx.android.parcel.Parcelize
 
                 @Parcelize data class Preview(
                     val images: List<Image>,
+                    val redditVideoPreview: RedditVideoPreview,
                     val enabled: Boolean
                 ) : Parcelable {
 
@@ -49,6 +48,18 @@ import kotlinx.android.parcel.Parcelize
                             val height: Int
                         ) : Parcelable
                     }
+
+                    @Parcelize data class RedditVideoPreview(
+                        val fallback_url: String,
+                        val height: Int,
+                        val width: Int,
+                        val scrubber_media_url: String,
+                        val dash_url: String,
+                        val duration: Int,
+                        val hls_url: String,
+                        val is_gif: Boolean,
+                        val transcoding_status: String
+                    ) : Parcelable
                 }
             }
         }
