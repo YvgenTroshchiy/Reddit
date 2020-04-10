@@ -3,22 +3,14 @@ package com.troshchii.reddit.core
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.troshchii.reddit.core.extensions.logI
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
-import kotlin.coroutines.CoroutineContext
 
 
-abstract class BaseViewModel(
-    private val uiContext: CoroutineContext = Dispatchers.Main
-) : ViewModel(), CoroutineScope {
+abstract class BaseViewModel : ViewModel() {
 
     protected var tag: String = this::class.java.simpleName
-
-    override val coroutineContext: CoroutineContext
-        get() = uiContext + SupervisorJob()
 
     init {
         logI(tag, "init")
@@ -39,6 +31,6 @@ abstract class BaseViewModel(
 
     override fun onCleared() {
         logI(tag, "onCleared")
-        cancel()
+        viewModelScope.cancel()
     }
 }

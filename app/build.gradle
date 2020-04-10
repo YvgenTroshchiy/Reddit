@@ -82,6 +82,7 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$arch_components_version"
     implementation "android.arch.lifecycle:reactivestreams:$arch_components_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-alpha01"
     implementation 'androidx.cardview:cardview:1.0.0'
     // endregion
 
