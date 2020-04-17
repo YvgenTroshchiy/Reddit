@@ -15,7 +15,6 @@ import okhttp3.logging.HttpLoggingInterceptor.Level.NONE
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit.SECONDS
@@ -43,7 +42,6 @@ fun retrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit =
         .baseUrl(BuildConfig.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create(gson))
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
 
 fun okHttpClient(cache: Cache): OkHttpClient =
@@ -54,7 +52,6 @@ fun okHttpClient(cache: Cache): OkHttpClient =
         .addInterceptor(HttpLoggingInterceptor().apply { level = if (DEBUG) BODY else NONE })
         .cache(cache)
         .build()
-
 
 fun cache(cacheFile: File) = Cache(cacheFile, (10 * 1024 * 1024 /* 10MB Cache */).toLong())
 

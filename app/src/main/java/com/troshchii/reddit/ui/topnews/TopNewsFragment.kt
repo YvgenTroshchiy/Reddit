@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
@@ -55,8 +54,6 @@ class TopNewsFragment : Fragment() {
     }
 
     private fun setupNewsList() {
-        binding.newsList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-
         topNewsAdapter = TopNewsAdapter {
             logI(logTag, "Click to the: ${it.title}, ${it.imageUrl}")
             it.imageUrl?.let { imageUrl ->
