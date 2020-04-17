@@ -11,12 +11,12 @@ Top news|News details
 * Rotation support
 
 ## TODO
-- [ ] Add card view
+- [ ] Pagination
+- [ ] Pagination library
+- [ ] Add Card view transition
 - [ ] Save image to the gallery
 - [ ] Play gif animation on details
 - [ ] Room
-- [ ] Pagination
-- [ ] Pagination library
 - [ ] Navigation library
 - [ ] Image placeholder
 - [ ] Empty state for adapter
@@ -32,6 +32,7 @@ Top news|News details
 * Koin 2
 * Coroutines
 * Retrofit
+* MaterialCardView
 
 #### (In other branch)
 * Android Dagger 2
