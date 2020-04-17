@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
@@ -61,6 +62,7 @@ class TopNewsFragment : Fragment() {
             }
         }
 
+        binding.newsList.layoutManager = GridLayoutManager(context, 2)
         binding.newsList.adapter = topNewsAdapter
     }
 }
