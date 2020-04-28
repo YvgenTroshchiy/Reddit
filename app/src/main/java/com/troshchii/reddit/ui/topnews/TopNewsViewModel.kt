@@ -25,4 +25,7 @@ class TopNewsViewModel constructor(private val topNewsUseCase: TopNewsUseCase) :
     private fun loadTopNews() {
         viewModelScope.launch { topNews.postUpdate(topNewsUseCase.execute()) }
     }
+
+    fun listScrolled(visibleItemCount: Int, lastVisibleItemPosition: Int, totalItemCount: Int) {
+    }
 }

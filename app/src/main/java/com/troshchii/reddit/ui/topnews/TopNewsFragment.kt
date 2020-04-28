@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
@@ -62,7 +63,22 @@ class TopNewsFragment : Fragment() {
             }
         }
 
-        binding.newsList.layoutManager = GridLayoutManager(context, 2)
-        binding.newsList.adapter = topNewsAdapter
+        with(binding.newsList) {
+            val layoutManager = GridLayoutManager(context, 2)
+            this.layoutManager = layoutManager
+            adapter = topNewsAdapter
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+
+                    val visibleItemCount = layoutManager.childCount
+                    val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+                    val totalItemCount = layoutManager.itemCount
+
+                    viewModel.listScrolled(visibleItemCount, lastVisibleItem, totalItemCount)
+                }
+            })
+        }
     }
 }
