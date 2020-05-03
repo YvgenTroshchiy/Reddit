@@ -13,10 +13,14 @@ class TopNewsUseCase(private val service: RedditService) : UseCase() {
 
     private val tag = getLogTag<TopNewsUseCase>()
 
+    companion object {
+        const val limit = 25
+    }
+
     override suspend fun execute(): Either<Failure, List<RedditPost>> {
         logI(tag, "execute")
 
-        val result = service.topNews(100)
+        val result = service.topNews(limit)
 
         return if (result.isSuccessful && result.body() != null) {
             Either.Right(result.body()!!.toTopNews())

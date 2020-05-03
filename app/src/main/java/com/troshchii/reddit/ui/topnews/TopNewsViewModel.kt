@@ -16,6 +16,10 @@ class TopNewsViewModel constructor(private val topNewsUseCase: TopNewsUseCase) :
 
     val topNews: LiveData<Either<Failure, List<RedditPost>>> = MutableLiveData()
 
+    companion object {
+        private const val VISIBLE_THRESHOLD = 5
+    }
+
     init {
         logI(tag, "init")
 
@@ -27,5 +31,9 @@ class TopNewsViewModel constructor(private val topNewsUseCase: TopNewsUseCase) :
     }
 
     fun listScrolled(visibleItemCount: Int, lastVisibleItemPosition: Int, totalItemCount: Int) {
+//        if (visibleItemCount + lastVisibleItemPosition + VISIBLE_THRESHOLD >= totalItemCount) {
+        if (lastVisibleItemPosition + VISIBLE_THRESHOLD >= totalItemCount) {
+            logI(tag, "load more")
+        }
     }
 }

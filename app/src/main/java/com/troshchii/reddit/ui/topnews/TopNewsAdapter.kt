@@ -35,6 +35,13 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
         }
     }
 
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<RedditPost>() {
+            override fun areItemsTheSame(old: RedditPost, new: RedditPost) = (old.id == new.id)
+            override fun areContentsTheSame(old: RedditPost, new: RedditPost) = (old == new)
+        }
+    }
+
     class RedditPostDiffCallback(
         private val old: List<RedditPost>,
         private val new: List<RedditPost>
