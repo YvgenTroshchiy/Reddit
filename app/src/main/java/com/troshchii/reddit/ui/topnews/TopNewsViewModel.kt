@@ -7,33 +7,28 @@ import com.troshchii.reddit.core.BaseViewModel
 import com.troshchii.reddit.core.exception.Failure
 import com.troshchii.reddit.core.extensions.logI
 import com.troshchii.reddit.core.functional.Either
-import com.troshchii.reddit.domain.TopNewsUseCase
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import kotlinx.coroutines.launch
 
 
-class TopNewsViewModel constructor(private val topNewsUseCase: TopNewsUseCase) : BaseViewModel() {
+private const val VISIBLE_THRESHOLD = 5
+
+
+class TopNewsViewModel constructor(private val repository: TopNewsRepository) : BaseViewModel() {
 
     val topNews: LiveData<Either<Failure, List<RedditPost>>> = MutableLiveData()
 
-    companion object {
-        private const val VISIBLE_THRESHOLD = 5
-    }
-
     init {
         logI(tag, "init")
-
-        loadTopNews()
-    }
-
-    private fun loadTopNews() {
-        viewModelScope.launch { topNews.postUpdate(topNewsUseCase.execute()) }
+        viewModelScope.launch { repository.loadTopNews() }
     }
 
     fun listScrolled(visibleItemCount: Int, lastVisibleItemPosition: Int, totalItemCount: Int) {
+        //TODO: use lastVisibleItemPosition or not?
 //        if (visibleItemCount + lastVisibleItemPosition + VISIBLE_THRESHOLD >= totalItemCount) {
         if (lastVisibleItemPosition + VISIBLE_THRESHOLD >= totalItemCount) {
             logI(tag, "load more")
+            viewModelScope.launch { repository.loadTopNews() }
         }
     }
 }
