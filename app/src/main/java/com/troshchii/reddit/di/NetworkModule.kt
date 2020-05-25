@@ -10,7 +10,7 @@ import com.troshchii.reddit.network.RedditService
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
+import okhttp3.logging.HttpLoggingInterceptor.Level.BASIC
 import okhttp3.logging.HttpLoggingInterceptor.Level.NONE
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
@@ -49,7 +49,7 @@ fun okHttpClient(cache: Cache): OkHttpClient =
         .connectTimeout(TIMEOUT, SECONDS)
         .readTimeout(TIMEOUT, SECONDS)
         .writeTimeout(TIMEOUT, SECONDS)
-        .addInterceptor(HttpLoggingInterceptor().apply { level = if (DEBUG) BODY else NONE })
+        .addInterceptor(HttpLoggingInterceptor().apply { level = if (DEBUG) BASIC else NONE })
         .cache(cache)
         .build()
 

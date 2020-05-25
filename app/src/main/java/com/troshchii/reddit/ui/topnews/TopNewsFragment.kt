@@ -45,7 +45,7 @@ class TopNewsFragment : Fragment() {
             when (it) {
                 is Either.Left -> {
                     logW(logTag, "Error: $it")
-                    context!!.toast("it", Toast.LENGTH_LONG)
+                    context?.toast("${it.left}", Toast.LENGTH_LONG)
                 }
                 is Either.Right -> {
                     logI(logTag, "Success")

@@ -3,9 +3,7 @@ package com.troshchii.reddit.core
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.troshchii.reddit.core.extensions.logI
-import kotlinx.coroutines.cancel
 
 
 abstract class BaseViewModel : ViewModel() {
@@ -31,6 +29,5 @@ abstract class BaseViewModel : ViewModel() {
 
     override fun onCleared() {
         logI(tag, "onCleared")
-        viewModelScope.cancel()
     }
 }

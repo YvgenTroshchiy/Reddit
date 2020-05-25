@@ -20,15 +20,22 @@ class TopNewsViewModel constructor(private val repository: TopNewsRepository) : 
 
     init {
         logI(tag, "init")
-        viewModelScope.launch { repository.loadTopNews() }
+        viewModelScope.launch {
+            topNews.postUpdate(repository.loadTopNews())
+        }
     }
 
     fun listScrolled(visibleItemCount: Int, lastVisibleItemPosition: Int, totalItemCount: Int) {
         //TODO: use lastVisibleItemPosition or not?
 //        if (visibleItemCount + lastVisibleItemPosition + VISIBLE_THRESHOLD >= totalItemCount) {
+
         if (lastVisibleItemPosition + VISIBLE_THRESHOLD >= totalItemCount) {
             logI(tag, "load more")
-            viewModelScope.launch { repository.loadTopNews() }
+
+            viewModelScope.launch {
+                //TODO: right update not replace topNews
+                topNews.postUpdate(repository.loadTopNews())
+            }
         }
     }
 }
