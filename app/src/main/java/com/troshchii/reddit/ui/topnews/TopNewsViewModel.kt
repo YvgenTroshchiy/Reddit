@@ -21,7 +21,7 @@ class TopNewsViewModel constructor(private val repository: TopNewsRepository) : 
     init {
         logI(tag, "init")
         viewModelScope.launch {
-            topNews.postUpdate(repository.loadTopNews())
+            topNews.postUpdate(repository.initialLoad())
         }
     }
 
@@ -34,7 +34,7 @@ class TopNewsViewModel constructor(private val repository: TopNewsRepository) : 
 
             viewModelScope.launch {
                 //TODO: right update not replace topNews
-                topNews.postUpdate(repository.loadTopNews())
+                topNews.postUpdate(repository.loadMore())
             }
         }
     }

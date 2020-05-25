@@ -20,13 +20,23 @@ class TopNewsRepository(
 
     private var after: String? = null
 
-    suspend fun loadTopNews(): Either<Failure, List<RedditPost>> {
+    suspend fun initialLoad(): Either<Failure, List<RedditPost>> {
+        logI(tag, "initialLoad")
+        return loadTopNews()
+    }
+
+    suspend fun loadMore(): Either<Failure, List<RedditPost>> {
+        logI(tag, "loadMore")
+        return loadTopNews(after)
+    }
+
+    private suspend fun loadTopNews(after: String? = null): Either<Failure, List<RedditPost>> {
         logI(tag, "loadTopNews")
 
         val result = service.topNews(LIMIT, after)
 
         return if (result.isSuccessful && result.body() != null) {
-            after = result.body()!!.listingData.after
+            this.after = result.body()!!.listingData.after
 
             Either.Right(result.body()!!.toTopNews())
         } else {
