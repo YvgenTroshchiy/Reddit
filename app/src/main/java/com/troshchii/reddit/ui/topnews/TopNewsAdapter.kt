@@ -1,5 +1,6 @@
 package com.troshchii.reddit.ui.topnews
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -9,25 +10,31 @@ import com.troshchii.reddit.ui.topnews.data.RedditPost
 import java.util.*
 
 
-class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView.Adapter<TopNewsAdapter.BindingHolder>() {
+class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView.Adapter<TopNewsAdapter.NewsViewHolder>() {
 
     var news: List<RedditPost> = LinkedList()
         set(value) {
             val diffResult = DiffUtil.calculateDiff(RedditPostDiffCallback(field, value));
             field = value
-            diffResult.dispatchUpdatesTo(this);
+            diffResult.dispatchUpdatesTo(this)
         }
 
     override fun getItemCount() = news.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        BindingHolder(NewsItem2ColumnsBinding.inflate(parent.context.inflater(), parent, false))
+    //TODO: Update
+    override fun getItemViewType(position: Int) = when (news[position]) {
+        is RedditPost -> ViewTypes.ITEM.code
+        else -> ViewTypes.PROGRESS.code
+    }
 
-    override fun onBindViewHolder(holder: BindingHolder, position: Int) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        NewsViewHolder(NewsItem2ColumnsBinding.inflate(parent.context.inflater(), parent, false))
+
+    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.bind(news[position])
     }
 
-    inner class BindingHolder(private val binding: NewsItem2ColumnsBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class NewsViewHolder(private val binding: NewsItem2ColumnsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(news: RedditPost) {
             binding.root.setOnClickListener { itemClick.invoke(news) }
             binding.news = news
@@ -35,7 +42,11 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
         }
     }
 
+    inner class ProgressViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
     companion object {
+        enum class ViewTypes(val code: Int) { ITEM(0), PROGRESS(1) }
+
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<RedditPost>() {
             override fun areItemsTheSame(old: RedditPost, new: RedditPost) = (old.id == new.id)
             override fun areContentsTheSame(old: RedditPost, new: RedditPost) = (old == new)

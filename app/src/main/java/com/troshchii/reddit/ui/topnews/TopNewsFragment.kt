@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
 import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.functional.Either
@@ -67,6 +68,17 @@ class TopNewsFragment : Fragment() {
             val layoutManager = GridLayoutManager(context, 2)
             this.layoutManager = layoutManager
             adapter = topNewsAdapter
+
+            layoutManager.spanSizeLookup = object : SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return when (topNewsAdapter.getItemViewType(position)) {
+                        //number of columns of the grid
+                        TopNewsAdapter.Companion.ViewTypes.ITEM.code -> 1
+                        TopNewsAdapter.Companion.ViewTypes.PROGRESS.code -> 2
+                        else -> -1
+                    }
+                }
+            }
 
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
