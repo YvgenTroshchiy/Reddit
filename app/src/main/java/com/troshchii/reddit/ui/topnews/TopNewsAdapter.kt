@@ -4,13 +4,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.inflater
 import com.troshchii.reddit.databinding.NewsItem2ColumnsBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import java.util.*
 
 
-class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView.Adapter<TopNewsAdapter.NewsViewHolder>() {
+class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var news: List<RedditPost> = LinkedList()
         set(value) {
@@ -28,10 +29,13 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        NewsViewHolder(NewsItem2ColumnsBinding.inflate(parent.context.inflater(), parent, false))
+        when (viewType) {
+            ViewTypes.ITEM.code -> NewsViewHolder(NewsItem2ColumnsBinding.inflate(parent.context.inflater(), parent, false))
+            else -> ProgressViewHolder(parent.context.inflater().inflate(R.layout.list_item_progress, parent, false))
+        }
 
-    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        holder.bind(news[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        (holder as? NewsViewHolder)?.bind(news[position])
     }
 
     inner class NewsViewHolder(private val binding: NewsItem2ColumnsBinding) : RecyclerView.ViewHolder(binding.root) {
