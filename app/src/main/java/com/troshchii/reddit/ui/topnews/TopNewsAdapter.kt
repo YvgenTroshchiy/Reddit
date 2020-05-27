@@ -20,12 +20,20 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
             diffResult.dispatchUpdatesTo(this)
         }
 
-    override fun getItemCount() = news.size
+    var isLoadingMore = false
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
-    //TODO: Update
-    override fun getItemViewType(position: Int) = when (news[position]) {
-        is RedditPost -> ViewTypes.ITEM.code
-        else -> ViewTypes.PROGRESS.code
+    override fun getItemCount() = if (isLoadingMore) news.size + 1 else news.size
+
+    override fun getItemViewType(position: Int): Int {
+        return if (isLoadingMore && position == news.size + 1) {
+            ViewTypes.PROGRESS.code
+        } else {
+            ViewTypes.ITEM.code
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
