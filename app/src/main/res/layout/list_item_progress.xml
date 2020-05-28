@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/transparent"
     android:layout_height="58dp"
-    android:background="@android:color/transparent">
+    android:layout_width="match_parent"
+    tools:background="#DCC2C2">
 
     <ProgressBar
-        android:layout_width="42dp"
+        android:layout_gravity="center"
         android:layout_height="42dp"
-        android:layout_gravity="center" />
+        android:layout_width="42dp" />
 
 </FrameLayout>
