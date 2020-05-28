@@ -9,6 +9,7 @@ import com.troshchii.reddit.domain.TopNewsUseCase
 import com.troshchii.reddit.network.RedditService
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import com.troshchii.reddit.ui.topnews.data.toTopNews
+import java.util.*
 
 
 class TopNewsRepository(
@@ -17,6 +18,9 @@ class TopNewsRepository(
 ) {
 
     private val tag = getLogTag<TopNewsUseCase>()
+
+    // It's kinda DataSource
+    private val topNewsList: LinkedList<RedditPost> = LinkedList()
 
     private var after: String? = null
 
@@ -38,7 +42,10 @@ class TopNewsRepository(
         return if (result.isSuccessful && result.body() != null) {
             this.after = result.body()!!.listingData.after
 
-            Either.Right(result.body()!!.toTopNews())
+            val right = result.body()!!.toTopNews()
+            topNewsList.addAll(right)
+
+            Either.Right(topNewsList)
         } else {
             Either.Left(Failure.ServerError(message = result.message()))
         }

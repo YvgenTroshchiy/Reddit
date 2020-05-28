@@ -19,7 +19,9 @@ class TopNewsViewModel constructor(private val repository: TopNewsRepository) : 
 
     val topNews: LiveData<Either<Failure, List<RedditPost>>> = MutableLiveData()
 
-    //TODO: Maybe create loading state?
+    //TODO: Maybe create loadingState or networkState?
+    enum class NetworkState { LOADING, LOADING_MORE, LOADED, ERROR }
+
     var isLoading: LiveData<Boolean> = MutableLiveData(false)
     var isLoadingMore: LiveData<Boolean> = MutableLiveData(false)
 
@@ -39,15 +41,12 @@ class TopNewsViewModel constructor(private val repository: TopNewsRepository) : 
         if (isLoadingMore.value?.not() == true && lastVisibleItemPosition + VISIBLE_THRESHOLD >= totalItemCount) {
             logI(tag, "load more")
 
-            isLoadingMore.postUpdate(true)
-
             viewModelScope.launch {
-                //TODO: right update not replace topNews
+                isLoadingMore.postUpdate(true)
+                // To catch loading more animation :)
                 debugDelayAsync(3)
                 val value = repository.loadMore()
-                logI(tag, "load more. 1")
                 topNews.postUpdate(value)
-                logI(tag, "load more. 2")
                 this@TopNewsViewModel.isLoadingMore.postUpdate(false)
             }
         }
