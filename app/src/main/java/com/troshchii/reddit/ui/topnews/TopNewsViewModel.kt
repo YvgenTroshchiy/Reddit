@@ -29,6 +29,7 @@ class TopNewsViewModel constructor(private val repository: TopNewsRepository) : 
         logI(tag, "init")
         viewModelScope.launch {
             isLoading.postUpdate(true)
+            debugDelayAsync(2) // To catch better loading more animation :)
             topNews.postUpdate(repository.initialLoad())
             isLoading.postUpdate(false)
         }
@@ -43,8 +44,7 @@ class TopNewsViewModel constructor(private val repository: TopNewsRepository) : 
 
             viewModelScope.launch {
                 isLoadingMore.postUpdate(true)
-                // To catch loading more animation :)
-                debugDelayAsync(3)
+                debugDelayAsync(3) // To catch better loading more animation :)
                 val value = repository.loadMore()
                 topNews.postUpdate(value)
                 this@TopNewsViewModel.isLoadingMore.postUpdate(false)
