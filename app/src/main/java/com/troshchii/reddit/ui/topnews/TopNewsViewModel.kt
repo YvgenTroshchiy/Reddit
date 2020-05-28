@@ -38,7 +38,7 @@ class TopNewsViewModel constructor(private val repository: TopNewsRepository) : 
 
             viewModelScope.launch {
                 //TODO: right update not replace topNews
-                debugDelayAsync(2)
+                debugDelayAsync(3)
                 val value = repository.loadMore()
                 logI(tag, "load more. 1")
                 topNews.postUpdate(value)
