@@ -29,7 +29,7 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
     override fun getItemCount() = if (isLoadingMore) news.size + 1 else news.size
 
     override fun getItemViewType(position: Int): Int {
-        return if (isLoadingMore && position == news.size + 1) {
+        return if (isLoadingMore && position == (itemCount - 1)) {
             ViewTypes.PROGRESS.code
         } else {
             ViewTypes.ITEM.code
@@ -43,6 +43,7 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
         }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (isLoadingMore && position == (itemCount - 1)) return
         (holder as? NewsViewHolder)?.bind(news[position])
     }
 
