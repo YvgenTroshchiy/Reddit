@@ -18,12 +18,17 @@ private const val VISIBLE_THRESHOLD = 5
 class TopNewsViewModel constructor(private val repository: TopNewsRepository) : BaseViewModel() {
 
     val topNews: LiveData<Either<Failure, List<RedditPost>>> = MutableLiveData()
+
+    //TODO: Maybe create loading state?
+    var isLoading: LiveData<Boolean> = MutableLiveData(false)
     var isLoadingMore: LiveData<Boolean> = MutableLiveData(false)
 
     init {
         logI(tag, "init")
         viewModelScope.launch {
+            isLoading.postUpdate(true)
             topNews.postUpdate(repository.initialLoad())
+            isLoading.postUpdate(false)
         }
     }
 

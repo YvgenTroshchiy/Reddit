@@ -54,6 +54,9 @@ class TopNewsFragment : Fragment() {
                 }
             }
         }
+        viewLifecycleOwner.observe(viewModel.isLoading) {
+            //TODO: show/hide loading
+        }
         viewLifecycleOwner.observe(viewModel.isLoadingMore) {
             topNewsAdapter.isLoadingMore = it ?: false
         }
