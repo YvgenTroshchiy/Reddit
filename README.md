@@ -9,9 +9,9 @@ Top news|News details
 * Play gif animation in thumbnails
 * Show full image
 * Rotation support
+* Pagination
 
 ## TODO
-- [ ] Pagination
 - [ ] Pagination library
 - [ ] Add Card view transition
 - [ ] Save image to the gallery
@@ -19,7 +19,6 @@ Top news|News details
 - [ ] Room
 - [ ] Navigation library
 - [ ] Image placeholder
-- [ ] Empty state for adapter
 - [ ] Modularization
 
 ## Technologies, Components
