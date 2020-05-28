@@ -7,6 +7,7 @@ import com.troshchii.reddit.core.BaseViewModel
 import com.troshchii.reddit.core.exception.Failure
 import com.troshchii.reddit.core.extensions.logI
 import com.troshchii.reddit.core.functional.Either
+import com.troshchii.reddit.core.utils.debugDelayAsync
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import kotlinx.coroutines.launch
 
@@ -37,6 +38,7 @@ class TopNewsViewModel constructor(private val repository: TopNewsRepository) : 
 
             viewModelScope.launch {
                 //TODO: right update not replace topNews
+                debugDelayAsync(2)
                 val value = repository.loadMore()
                 logI(tag, "load more. 1")
                 topNews.postUpdate(value)

@@ -1,14 +1,10 @@
 package com.troshchii.reddit.ui.topnews
 
-import com.nhaarman.mockito_kotlin.verify
-import com.troshchii.reddit.di.allAppModules
 import com.troshchii.reddit.di.useCaseModule
 import com.troshchii.reddit.domain.TopNewsUseCase
-import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.koin.core.context.startKoin
-import org.koin.dsl.module
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.inject
 
