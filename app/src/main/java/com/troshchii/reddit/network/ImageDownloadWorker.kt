@@ -8,9 +8,7 @@ import com.troshchii.reddit.core.extensions.getThreadMessage
 import com.troshchii.reddit.core.extensions.logI
 import com.troshchii.reddit.core.utils.getBitmapWithGlideAndWriteIt
 
-
 private const val EXTRA_IMAGE_URL = "image_url"
-
 
 class ImageDownloadWorker(private val appContext: Context, workerParams: WorkerParameters) : Worker(appContext, workerParams) {
 
@@ -26,6 +24,7 @@ class ImageDownloadWorker(private val appContext: Context, workerParams: WorkerP
         val url = "https://www.redditstatic.com/gold/awards/icon/SnooClappingPremium_512.png"
         val result = getBitmapWithGlideAndWriteIt(appContext, url, "image")
 
+        logI(tag, "Done")
         return if (result) Result.success() else Result.failure()
     }
 }
