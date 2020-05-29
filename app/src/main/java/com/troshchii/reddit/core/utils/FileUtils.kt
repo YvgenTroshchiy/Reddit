@@ -2,6 +2,7 @@ package com.troshchii.reddit.core.utils
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.os.Environment
 import android.os.Environment.DIRECTORY_DOWNLOADS
 import androidx.annotation.WorkerThread
 import com.troshchii.reddit.core.extensions.getBitmapWithGlide
@@ -32,20 +33,11 @@ fun writeBitmapToFile(context: Context, fileName: String, bitmap: Bitmap) {
     val externalFilesDir = context.getExternalFilesDir(DIRECTORY_DOWNLOADS)
     val file = File(externalFilesDir, fileName)
 
-    FileOutputStream(file).use {
-        bitmap.compress(Bitmap.CompressFormat.WEBP, 100, it)
-    }
-}
-
-private fun writeFile(file: File, content: String): String? {
     try {
         FileOutputStream(file).use {
-            it.write(content.toByteArray())
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
         }
     } catch (e: FileNotFoundException) {
-        logE(TAG, "writeFile", e)
-        return null
+        logE(TAG, "writeBitmapToFile", e)
     }
-
-    return file.name
 }

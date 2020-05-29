@@ -3,6 +3,7 @@ package com.troshchii.reddit.ui.newsdetails
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Environment
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -57,7 +58,13 @@ class NewsDetailsActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menu_save -> {
                 logD(tag, "Save Image")
+
+                if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
+                    toast("External storage not mounted!")
+                }
+
                 toast("Downloading...")
+
                 WorkManager.getInstance(this).enqueue(OneTimeWorkRequestBuilder<ImageDownloadWorker>().build())
                 true
             }

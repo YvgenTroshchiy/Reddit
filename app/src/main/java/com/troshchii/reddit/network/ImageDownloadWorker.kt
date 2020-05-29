@@ -22,7 +22,7 @@ class ImageDownloadWorker(private val appContext: Context, workerParams: WorkerP
 
         //TODO pass it
         val url = "https://www.redditstatic.com/gold/awards/icon/SnooClappingPremium_512.png"
-        val result = getBitmapWithGlideAndWriteIt(appContext, url, "image")
+        val result = getBitmapWithGlideAndWriteIt(appContext, url, "image.png")
 
         logI(tag, "Done")
         return if (result) Result.success() else Result.failure()
