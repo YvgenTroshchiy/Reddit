@@ -12,12 +12,12 @@ Top news|News details
 * Pagination
 
 ## TODO
-- [ ] Pagination library
-- [ ] Add Card view transition
 - [ ] Save image to the gallery
-- [ ] Play gif animation on details
 - [ ] Room
 - [ ] Navigation library
+- [ ] Pagination library
+- [ ] Add Card view transition
+- [ ] Play gif animation on details
 - [ ] Image placeholder
 - [ ] Modularization
 
