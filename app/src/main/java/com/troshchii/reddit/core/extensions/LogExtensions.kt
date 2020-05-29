@@ -1,12 +1,14 @@
 package com.troshchii.reddit.core.extensions
 
+import android.os.Looper
 import android.util.Log
 import com.troshchii.reddit.BuildConfig
-
 
 val production = !BuildConfig.DEBUG
 
 inline fun <reified T : Any> getLogTag(): String = T::class.java.simpleName
+
+fun getThreadMessage() = " [Is main thread: ${Looper.myLooper() == Looper.getMainLooper()}] "
 
 fun Any.logI(tag: String = getLogTag(), text: String) {
     if (production) return

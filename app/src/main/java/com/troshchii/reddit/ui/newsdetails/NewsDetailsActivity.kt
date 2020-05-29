@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logD
+import com.troshchii.reddit.core.extensions.toast
 import com.troshchii.reddit.network.ImageDownloadWorker
 import kotlinx.android.synthetic.main.newsdetails_activity.*
 
@@ -56,6 +57,7 @@ class NewsDetailsActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menu_save -> {
                 logD(tag, "Save Image")
+                toast("Downloading...")
                 WorkManager.getInstance(this).enqueue(OneTimeWorkRequestBuilder<ImageDownloadWorker>().build())
                 true
             }

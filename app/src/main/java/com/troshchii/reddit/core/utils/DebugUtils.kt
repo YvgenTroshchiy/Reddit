@@ -1,6 +1,5 @@
 package com.troshchii.reddit.core.utils
 
-import android.os.Looper
 import android.os.StrictMode
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
@@ -20,8 +19,6 @@ fun setStrictMode() {
             .build()
     )
 }
-
-fun isMainThread() = (Looper.myLooper() == Looper.getMainLooper())
 
 fun debugDelayAsync(seconds: Long) {
     thread {

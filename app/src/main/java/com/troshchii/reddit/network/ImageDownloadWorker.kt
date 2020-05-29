@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.troshchii.reddit.core.extensions.getLogTag
+import com.troshchii.reddit.core.extensions.getThreadMessage
 import com.troshchii.reddit.core.extensions.logI
 import com.troshchii.reddit.core.utils.getBitmapWithGlideAndWriteIt
 
@@ -16,11 +17,13 @@ class ImageDownloadWorker(private val appContext: Context, workerParams: WorkerP
     private val tag = getLogTag<ImageDownloadWorker>()
 
     override fun doWork(): Result {
-        logI(tag, "doWork")
+        logI(tag, "doWork ${getThreadMessage()}")
+
+        // Can't toast on a thread that has not called Looper.prepare()
+//        appContext.toast("Downloading...")
 
         //TODO pass it
-        val url =
-            "https://external-preview.redd.it/dl1WffE4D_VNuLLUa5zsXvSuJeVq6A1ABCL2PTv6Eeo.jpg?auto=webp&amp;s=e550ce2fd518b9af9fe438d99fdcbc1b6686b175"
+        val url = "https://www.redditstatic.com/gold/awards/icon/SnooClappingPremium_512.png"
         val result = getBitmapWithGlideAndWriteIt(appContext, url, "image")
 
         return if (result) Result.success() else Result.failure()
