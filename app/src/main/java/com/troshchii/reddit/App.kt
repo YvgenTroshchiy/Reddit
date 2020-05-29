@@ -2,7 +2,7 @@ package com.troshchii.reddit
 
 import android.app.Application
 import com.crashlytics.android.Crashlytics
-import com.troshchii.reddit.core.extensions.setStrictMode
+import com.troshchii.reddit.core.utils.setStrictMode
 import com.troshchii.reddit.di.allAppModules
 import io.fabric.sdk.android.Fabric
 import org.koin.android.ext.koin.androidContext

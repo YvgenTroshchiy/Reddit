@@ -6,19 +6,18 @@ import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
 
-fun enableStrictMode() {
+fun setStrictMode() {
     StrictMode.setThreadPolicy(
         StrictMode.ThreadPolicy.Builder()
             .detectAll()
-            .penaltyDeathOnNetwork()
-            .penaltyFlashScreen()
-            .penaltyLog().build()
+            .penaltyLog()
+            .build()
     )
-
     StrictMode.setVmPolicy(
         StrictMode.VmPolicy.Builder()
             .detectAll()
-            .penaltyLog().build()
+            .penaltyLog()
+            .build()
     )
 }
 
