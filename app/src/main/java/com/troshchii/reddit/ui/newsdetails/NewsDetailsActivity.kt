@@ -7,11 +7,13 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.bumptech.glide.Glide
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logD
-import com.troshchii.reddit.core.extensions.toast
+import com.troshchii.reddit.network.ImageDownloadWorker
 import kotlinx.android.synthetic.main.newsdetails_activity.*
 
 
@@ -53,9 +55,8 @@ class NewsDetailsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.menu_save -> {
-                //TODO: Save image
-                logD(tag, "Save")
-                toast("Save Image")
+                logD(tag, "Save Image")
+                WorkManager.getInstance(this).enqueue(OneTimeWorkRequestBuilder<ImageDownloadWorker>().build())
                 true
             }
             else -> false

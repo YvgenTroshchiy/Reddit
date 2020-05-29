@@ -35,12 +35,12 @@ fun Any.logW(tag: String = getLogTag(), text: String, throwable: Throwable?) {
     Log.w(tag, text, throwable)
 }
 
-fun Any.logE(tag: String = getLogTag(), text: String) {
+fun logE(tag: String, text: String) {
     if (production) return
     Log.e(tag, text)
 }
 
-fun Any.logE(tag: String = getLogTag(), text: String, t: Throwable) {
+fun logE(tag: String, text: String = "", t: Throwable) {
     if (production) return
     Log.e(tag, text, t)
 }
