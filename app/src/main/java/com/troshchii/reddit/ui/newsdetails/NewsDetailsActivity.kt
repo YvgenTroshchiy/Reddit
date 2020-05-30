@@ -51,6 +51,10 @@ class NewsDetailsActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        //TODO: update
+        supportActionBar?.title = intent.title
+        supportActionBar?.subtitle = intent.title
+
         showImage()
     }
 
