@@ -44,8 +44,9 @@ inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Fragmen
 }
 
 inline fun <reified T : Activity> Context.withArgs(vararg params: Pair<String, String>) {
-    val intent = Intent(this, T::class.java)
-    params.forEach { intent.putExtra(it.first, it.second) }
+    val intent = Intent(this, T::class.java).apply {
+        params.forEach { putExtra(it.first, it.second) }
+    }
     startActivity(intent)
 }
 

@@ -17,7 +17,7 @@ import com.troshchii.reddit.core.extensions.logD
 import com.troshchii.reddit.core.extensions.toast
 import kotlinx.android.synthetic.main.newsdetails_activity.*
 
-private const val EXTRA_TITLE = "EXTRA_TITLE"
+private const val EXTRA_TITLE = "extra_title"
 private const val EXTRA_URL = "extra_url"
 
 private var Intent.title: String
@@ -37,8 +37,9 @@ class NewsDetailsActivity : AppCompatActivity() {
     private val tag = getLogTag<NewsDetailsActivity>()
 
     companion object {
-        fun newIntent(context: Context, imageUrl: String): Intent {
+        fun newIntent(context: Context, title: String, imageUrl: String): Intent {
             return Intent(context, NewsDetailsActivity::class.java).apply {
+                this.title = title
                 this.imageUrl = imageUrl
             }
         }
@@ -69,6 +70,7 @@ class NewsDetailsActivity : AppCompatActivity() {
                     toast("External storage not mounted!")
                 } else {
 
+                    //TODO: use not debug
                     val url = "https://www.redditstatic.com/gold/awards/icon/SnooClappingPremium_512.png"
 
                     val request = DownloadManager.Request(Uri.parse(url))

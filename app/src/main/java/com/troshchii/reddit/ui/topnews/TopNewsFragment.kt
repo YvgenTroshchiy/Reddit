@@ -15,7 +15,6 @@ import com.troshchii.reddit.databinding.TopnewsFragmentBinding
 import com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class TopNewsFragment : Fragment() {
 
     private val logTag = getLogTag<TopNewsFragment>()
@@ -69,7 +68,7 @@ class TopNewsFragment : Fragment() {
         topNewsAdapter = TopNewsAdapter {
             logI(logTag, "Click to the: ${it.title}, ${it.imageUrl}")
             it.imageUrl?.let { imageUrl ->
-                context!!.withArgs<NewsDetailsActivity>("extra_url" to it.title, "extra_url" to it.imageUrl)
+                startActivity(NewsDetailsActivity.newIntent(context!!, it.title, it.imageUrl))
             }
         }
 
