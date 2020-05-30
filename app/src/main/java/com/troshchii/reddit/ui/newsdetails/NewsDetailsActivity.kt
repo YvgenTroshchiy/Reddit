@@ -1,32 +1,36 @@
 package com.troshchii.reddit.ui.newsdetails
 
+import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import com.bumptech.glide.Glide
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logD
 import com.troshchii.reddit.core.extensions.toast
-import com.troshchii.reddit.network.ImageDownloadWorker
 import kotlinx.android.synthetic.main.newsdetails_activity.*
 
-
+private const val EXTRA_TITLE = "EXTRA_TITLE"
 private const val EXTRA_URL = "extra_url"
+
+private var Intent.title: String
+    get() = getStringExtra(EXTRA_TITLE)
+    set(value) {
+        putExtra(EXTRA_TITLE, value)
+    }
 
 private var Intent.imageUrl: String
     get() = getStringExtra(EXTRA_URL)
     set(value) {
         putExtra(EXTRA_URL, value)
     }
-
 
 class NewsDetailsActivity : AppCompatActivity() {
 
@@ -54,6 +58,8 @@ class NewsDetailsActivity : AppCompatActivity() {
         return true
     }
 
+    private var downloadId = -1L
+
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.menu_save -> {
@@ -61,11 +67,19 @@ class NewsDetailsActivity : AppCompatActivity() {
 
                 if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
                     toast("External storage not mounted!")
+                } else {
+
+                    val url = "https://www.redditstatic.com/gold/awards/icon/SnooClappingPremium_512.png"
+
+                    val request = DownloadManager.Request(Uri.parse(url))
+                        .setTitle(intent.title)
+                        .setDescription("Downloading")
+                        .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                        .setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES, intent.title + ".png")
+
+                    val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    downloadId = downloadManager.enqueue(request)
                 }
-
-                toast("Downloading...")
-
-                WorkManager.getInstance(this).enqueue(OneTimeWorkRequestBuilder<ImageDownloadWorker>().build())
                 true
             }
             else -> false

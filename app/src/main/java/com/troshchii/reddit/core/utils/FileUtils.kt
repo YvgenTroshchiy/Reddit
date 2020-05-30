@@ -2,7 +2,6 @@ package com.troshchii.reddit.core.utils
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.os.Environment
 import android.os.Environment.DIRECTORY_DOWNLOADS
 import androidx.annotation.WorkerThread
 import com.troshchii.reddit.core.extensions.getBitmapWithGlide

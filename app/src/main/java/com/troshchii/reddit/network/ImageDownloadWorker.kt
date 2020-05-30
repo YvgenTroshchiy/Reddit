@@ -1,12 +1,13 @@
 package com.troshchii.reddit.network
 
 import android.content.Context
+import android.os.Environment
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.getThreadMessage
 import com.troshchii.reddit.core.extensions.logI
-import com.troshchii.reddit.core.utils.getBitmapWithGlideAndWriteIt
 
 private const val EXTRA_IMAGE_URL = "image_url"
 
@@ -22,8 +23,14 @@ class ImageDownloadWorker(private val appContext: Context, workerParams: WorkerP
 
         //TODO pass it
         val url = "https://www.redditstatic.com/gold/awards/icon/SnooClappingPremium_512.png"
-        val result = getBitmapWithGlideAndWriteIt(appContext, url, "image.png")
+//        val result = getBitmapWithGlideAndWriteIt(appContext, url, "image.png")
 
+        val fileName = "image_redit.png"
+
+//        val downloadManager = getSystemService(appContext, Context.DOWNLOAD_SERVICE);
+
+//        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES, fileName);
+        val result = true;
         logI(tag, "Done")
         return if (result) Result.success() else Result.failure()
     }

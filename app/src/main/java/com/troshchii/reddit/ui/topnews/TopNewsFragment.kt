@@ -69,7 +69,7 @@ class TopNewsFragment : Fragment() {
         topNewsAdapter = TopNewsAdapter {
             logI(logTag, "Click to the: ${it.title}, ${it.imageUrl}")
             it.imageUrl?.let { imageUrl ->
-                startActivity(NewsDetailsActivity.newIntent(context!!, imageUrl))
+                context!!.withArgs<NewsDetailsActivity>("extra_url" to it.title, "extra_url" to it.imageUrl)
             }
         }
 
