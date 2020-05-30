@@ -32,6 +32,7 @@ private var Intent.imageUrl: String
         putExtra(EXTRA_URL, value)
     }
 
+//TODO: convert to fragment and use navigation library
 class NewsDetailsActivity : AppCompatActivity() {
 
     private val tag = getLogTag<NewsDetailsActivity>()
@@ -63,8 +64,6 @@ class NewsDetailsActivity : AppCompatActivity() {
         return true
     }
 
-    private var downloadId = -1L
-
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.menu_save -> {
@@ -83,8 +82,7 @@ class NewsDetailsActivity : AppCompatActivity() {
                         .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                         .setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES, intent.title + ".png")
 
-                    val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-                    downloadId = downloadManager.enqueue(request)
+                    (getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager).enqueue(request)
                 }
                 true
             }
