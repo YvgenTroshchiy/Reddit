@@ -11,18 +11,18 @@ Top news|News details
 * Show full image in Details Screen
 * Play gif animation in thumbnails
 
-## WIP
+### WIP
 * Download image
 
-## TODO
-- [ ] Save image to the gallery
-- [ ] Room
-- [ ] Navigation library
-- [ ] Pagination library
-- [ ] Add Card view transition
-- [ ] Play gif animation on details
-- [ ] Image placeholder
-- [ ] Modularization
+### TODO
+* Save image to the gallery
+* Room
+* Navigation library
+* Pagination library
+* Add Card view transition
+* Play gif animation on details
+* Image placeholder
+* Modularization
 
 ## Technologies, Components
 * Kotlin
@@ -36,6 +36,6 @@ Top news|News details
 * Retrofit
 * MaterialCardView
 
-#### (In other branch)
+### In `dagger` branch
 * Android Dagger 2
 * Rxjava 2
