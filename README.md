@@ -6,10 +6,13 @@ Top news|News details
 
 ## Features
 * Load top news from Reddit
-* Play gif animation in thumbnails
-* Show full image
-* Rotation support
 * Pagination
+* Rotation support
+* Show full image in Details Screen
+* Play gif animation in thumbnails
+
+## WIP
+* Download image
 
 ## TODO
 - [ ] Save image to the gallery
