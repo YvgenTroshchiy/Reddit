@@ -105,15 +105,9 @@ class TopNewsFragment : Fragment() {
     private fun openDetailsActivity(it: RedditPost) {
         logI(logTag, "Click to the: ${it.title}, ${it.imageUrl}")
 
-        val activityOptions = makeSceneTransitionAnimation(
-            this@TopNewsFragment.activity as Activity,
-            image,
-            getString(R.string.transition_image)
-        )
+        val intent = NewsDetailsActivity.newIntent(context!!, it.title, it.imageUrl)
+        val activityOptions = makeSceneTransitionAnimation(activity as Activity, image, getString(R.string.transition_image))
 
-        startActivity(
-            NewsDetailsActivity.newIntent(context!!, it.title, it.imageUrl),
-            activityOptions.toBundle()
-        )
+        startActivity(intent, activityOptions.toBundle())
     }
 }
