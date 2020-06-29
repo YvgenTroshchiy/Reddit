@@ -30,6 +30,7 @@ import kotlinx.android.parcel.Parcelize
                 val author: String,
                 val created_utc: String,
                 val numComments: String,
+                val url: String,
                 val media: Media?
             ) : Parcelable {
 

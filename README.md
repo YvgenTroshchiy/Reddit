@@ -6,21 +6,20 @@ Top news|News details
 
 ## Features
 * Load top news from Reddit
+* Play gif animation in thumbnails
 * Pagination
 * Rotation support
 * Show full image in Details Screen
-* Play gif animation in thumbnails
-
-### WIP
 * Download image
 
+### WIP
+* Add Card view transition
+
 ### TODO
-* Save image to the gallery
 * Room
 * Navigation library
 * Pagination library
-* Add Card view transition
-* Play gif animation on details
+* Play gif animation/video on details
 * Image placeholder
 * Modularization
 

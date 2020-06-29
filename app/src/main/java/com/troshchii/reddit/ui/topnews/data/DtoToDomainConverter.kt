@@ -10,8 +10,7 @@ private fun childrenToRedditPost(children: TopNewsDto.ListingData.Children): Red
     return RedditPost(
         id = redditPost.id,
         thumbnail = redditPost.media?.oembed?.thumbnailUrl ?: redditPost.thumbnail,
-        // TODO: Get from resolutions or Gif
-        imageUrl = redditPost.preview?.images?.get(0)?.source?.url,
+        imageUrl = redditPost.url,
         title = redditPost.title,
         author = redditPost.author,
         created_utc = redditPost.created_utc,

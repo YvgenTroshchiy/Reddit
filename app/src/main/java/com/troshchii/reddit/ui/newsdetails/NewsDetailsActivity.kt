@@ -72,11 +72,7 @@ class NewsDetailsActivity : AppCompatActivity() {
                 if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
                     toast("External storage not mounted!")
                 } else {
-
-                    //TODO: use not debug
-                    val url = "https://www.redditstatic.com/gold/awards/icon/SnooClappingPremium_512.png"
-
-                    val request = DownloadManager.Request(Uri.parse(url))
+                    val request = DownloadManager.Request(Uri.parse(intent.imageUrl))
                         .setTitle(intent.title)
                         .setDescription("Downloading")
                         .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
