@@ -43,7 +43,7 @@
 
             <!-- thumbnail -->
             <ImageView
-                android:id="@+id/thumbnail"
+                android:id="@+id/image"
                 imageUrl="@{news.thumbnail}"
                 android:layout_width="0dp"
                 android:layout_height="180dp"
@@ -65,7 +65,7 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/thumbnail"
+                app:layout_constraintTop_toBottomOf="@id/image"
                 tools:text="commonvanilla" />
 
             <!-- xHoursAgo -->

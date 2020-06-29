@@ -4,4 +4,8 @@
 
     <string name="save">Save</string>
 
+    <!-- region Shared Transition Elements -->
+    <string name="transition_image">transition_image</string>
+    <!-- endregion -->
+
 </resources>

@@ -1,18 +1,23 @@
 package com.troshchii.reddit.ui.topnews
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityOptionsCompat.makeSceneTransitionAnimation
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
+import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
 import com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity
+import com.troshchii.reddit.ui.topnews.data.RedditPost
+import kotlinx.android.synthetic.main.news_item_2_columns.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TopNewsFragment : Fragment() {
@@ -65,12 +70,7 @@ class TopNewsFragment : Fragment() {
     }
 
     private fun setupNewsList() {
-        topNewsAdapter = TopNewsAdapter {
-            logI(logTag, "Click to the: ${it.title}, ${it.imageUrl}")
-            it.imageUrl?.let { imageUrl ->
-                startActivity(NewsDetailsActivity.newIntent(context!!, it.title, it.imageUrl))
-            }
-        }
+        topNewsAdapter = TopNewsAdapter { openDetailsActivity(it) }
 
         with(binding.newsList) {
             val layoutManager = GridLayoutManager(context, 2)
@@ -100,5 +100,20 @@ class TopNewsFragment : Fragment() {
                 }
             })
         }
+    }
+
+    private fun openDetailsActivity(it: RedditPost) {
+        logI(logTag, "Click to the: ${it.title}, ${it.imageUrl}")
+
+        val activityOptions = makeSceneTransitionAnimation(
+            this@TopNewsFragment.activity as Activity,
+            image,
+            getString(R.string.transition_image)
+        )
+
+        startActivity(
+            NewsDetailsActivity.newIntent(context!!, it.title, it.imageUrl),
+            activityOptions.toBundle()
+        )
     }
 }
