@@ -35,6 +35,6 @@ Top news|News details
 * Retrofit
 * MaterialCardView
 
-### In `dagger` branch
+## In _dagger_ branch (Obsolete)
 * Android Dagger 2
 * Rxjava 2

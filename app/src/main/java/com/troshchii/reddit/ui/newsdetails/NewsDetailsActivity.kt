@@ -10,10 +10,10 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
-import com.bumptech.glide.Glide
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logD
+import com.troshchii.reddit.core.extensions.setImageUrl
 import com.troshchii.reddit.core.extensions.toast
 import kotlinx.android.synthetic.main.newsdetails_activity.*
 
@@ -88,9 +88,7 @@ class NewsDetailsActivity : AppCompatActivity() {
     // TODO: Create VM. Set Placeholder
     private fun showImage() {
         val url = HtmlCompat.fromHtml(intent.imageUrl, HtmlCompat.FROM_HTML_MODE_LEGACY)
-        Glide.with(this)
-            .load(url.toString())
-            .into(image)
+        image.setImageUrl(url.toString())
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.WorkerThread
 import androidx.fragment.app.Fragment
@@ -54,4 +55,10 @@ inline fun <T : Fragment> T.withArgs(argsBuilder: Bundle.() -> Unit): T {
     return apply {
         arguments = Bundle().apply(argsBuilder)
     }
+}
+
+fun ImageView.setImageUrl(url: String) {
+    Glide.with(context)
+        .load(url)
+        .into(this)
 }
