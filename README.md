@@ -11,6 +11,7 @@ Top news|News details
 * Rotation support
 * Show full image in Details Screen
 * Download image
+* Custom font
 
 ### WIP
 * Add Card view transition
