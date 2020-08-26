@@ -1,11 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="Theme.Reddit" parent="Theme.MaterialComponents">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="LandasansTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/landasans_medium</item>
     </style>
 
 </resources>
