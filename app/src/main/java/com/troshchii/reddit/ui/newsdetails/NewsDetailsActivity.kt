@@ -20,13 +20,13 @@ import kotlinx.android.synthetic.main.newsdetails_activity.*
 private const val EXTRA_TITLE = "extra_title"
 private const val EXTRA_URL = "extra_url"
 
-private var Intent.title: String
+private var Intent.title: String?
     get() = getStringExtra(EXTRA_TITLE)
     set(value) {
         putExtra(EXTRA_TITLE, value)
     }
 
-private var Intent.imageUrl: String
+private var Intent.imageUrl: String?
     get() = getStringExtra(EXTRA_URL)
     set(value) {
         putExtra(EXTRA_URL, value)
@@ -87,8 +87,10 @@ class NewsDetailsActivity : AppCompatActivity() {
 
     // TODO: Create VM. Set Placeholder
     private fun showImage() {
-        val url = HtmlCompat.fromHtml(intent.imageUrl, HtmlCompat.FROM_HTML_MODE_LEGACY)
-        image.setImageUrl(url.toString())
+        intent.imageUrl?.let {
+            val url = HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_LEGACY)
+            image.setImageUrl(url.toString())
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

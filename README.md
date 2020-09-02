@@ -30,11 +30,14 @@ Top news|News details
 * Android architecture components
     * ViewModel
     * LiveData
-* DataBinding / ViewBinding
+* ViewBinding
 * Koin 2
 * Coroutines
 * Retrofit
 * MaterialCardView
+
+## Other
+* DataBinding was removed because I strongly against about it.
 
 ## In _dagger_ branch (Obsolete)
 * Android Dagger 2

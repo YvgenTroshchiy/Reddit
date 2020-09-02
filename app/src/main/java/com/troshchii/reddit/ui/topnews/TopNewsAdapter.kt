@@ -5,10 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.troshchii.reddit.R
-import com.troshchii.reddit.core.extensions.inflater
+import com.troshchii.reddit.core.extensions.inflate
+import com.troshchii.reddit.core.extensions.setImageUrl
 import com.troshchii.reddit.databinding.NewsItem2ColumnsBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
-import java.util.*
+import org.jetbrains.anko.layoutInflater
+import java.util.LinkedList
 
 
 class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -38,8 +40,8 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         when (viewType) {
-            ViewTypes.ITEM.code -> NewsViewHolder(NewsItem2ColumnsBinding.inflate(parent.context.inflater(), parent, false))
-            else -> ProgressViewHolder(parent.context.inflater().inflate(R.layout.list_item_progress, parent, false))
+            ViewTypes.ITEM.code -> NewsViewHolder(NewsItem2ColumnsBinding.inflate(parent.context.layoutInflater))
+            else -> ProgressViewHolder(parent.inflate(R.layout.list_item_progress))
         }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -50,8 +52,12 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
     inner class NewsViewHolder(private val binding: NewsItem2ColumnsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(news: RedditPost) {
             binding.root.setOnClickListener { itemClick.invoke(news) }
-            binding.news = news
-            binding.executePendingBindings()
+
+            binding.title.text = news.title
+            binding.image.setImageUrl(news.thumbnail)
+            binding.author.text = news.author
+            binding.xHoursAgo.text = news.created_utc
+            binding.numComments.text = news.numComments
         }
     }
 

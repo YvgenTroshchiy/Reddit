@@ -25,7 +25,7 @@ fun Context.inflater(): LayoutInflater = LayoutInflater.from(this)
 
 fun ViewGroup.inflate(
     layoutId: Int, attachToRoot: Boolean = false
-): View = LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
+): View = context.inflater().inflate(layoutId, this, attachToRoot)
 
 inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> FragmentTransaction) =
     beginTransaction().func().commit()
@@ -57,8 +57,12 @@ inline fun <T : Fragment> T.withArgs(argsBuilder: Bundle.() -> Unit): T {
     }
 }
 
-fun ImageView.setImageUrl(url: String) {
-    Glide.with(context)
-        .load(url)
-        .into(this)
+fun ImageView.setImageUrl(url: String?) {
+    url?.let {
+        Glide.with(context)
+            .load(it)
+            .into(this)
+    } ?: run {
+        // TODO: Show placeholder
+    }
 }
