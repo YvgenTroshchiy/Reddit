@@ -14,13 +14,14 @@ Top news|News details
 * Custom font
 
 ### WIP
-* Add Card view transition
+* Dark Theme
 
 ### TODO
 * Room
 * Navigation library
 * Pagination library
 * Play gif animation/video on details
+* Add Card view transition
 * Image placeholder
 * Modularization
 
