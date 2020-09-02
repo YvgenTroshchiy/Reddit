@@ -6,6 +6,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+        <item name="backgroundColor">#FFFFFF</item>
+
         <item name="android:textViewStyle">@style/DefaultTextViewStyle</item>
     </style>
 

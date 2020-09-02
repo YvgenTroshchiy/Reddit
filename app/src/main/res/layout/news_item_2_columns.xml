@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
     android:elevation="40dp"
+    app:contentPadding="8dp"
     tools:layout_width="200dp">
 
     <!-- Change it to Card layout -->
@@ -13,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground"
-        android:padding="8dp"
-        tools:background="#5D5C5C">
+        android:padding="8dp">
 
         <!-- title -->
         <TextView

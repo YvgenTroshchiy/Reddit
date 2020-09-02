@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Reddit" parent="Theme.MaterialComponents.DayNight">
+<!--        <item name="colorSurface">#5E7A37</item>-->
+<!--        <item name="backgroundColor">#7A3737</item>-->
+    </style>
+
+</resources>

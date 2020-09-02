@@ -11,10 +11,10 @@ Top news|News details
 * Rotation support
 * Show full image in Details Screen
 * Download image
+* Dark Theme
 * Custom font
 
 ### WIP
-* Dark Theme
 
 ### TODO
 * Room
