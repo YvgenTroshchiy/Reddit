@@ -1,9 +1,10 @@
 apply {
     plugin 'com.android.application'
+    plugin 'com.google.gms.google-services'
+    plugin 'com.google.firebase.crashlytics'
     plugin 'kotlin-android'
     plugin 'kotlin-android-extensions'
     plugin 'kotlin-kapt'
-    plugin 'io.fabric'
 }
 
 android {
@@ -123,8 +124,8 @@ dependencies {
 
     // region Firebase
     implementation 'com.google.firebase:firebase-core:17.5.0'
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.2'
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
     // endregion
 
     // region Tests
