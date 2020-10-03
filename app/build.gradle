@@ -76,7 +76,7 @@ dependencies {
     // endregion
 
     // region Androidx
-    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
@@ -88,7 +88,7 @@ dependencies {
     // endregion
 
     // region Ui
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     kapt 'com.github.bumptech.glide:compiler:4.10.0'
     // endregion
