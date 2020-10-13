@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.inflate
+import com.troshchii.reddit.core.extensions.inflater
 import com.troshchii.reddit.core.extensions.setImageUrl
 import com.troshchii.reddit.databinding.NewsItem2ColumnsBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
-import org.jetbrains.anko.layoutInflater
 import java.util.LinkedList
 
 
@@ -40,7 +40,7 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         when (viewType) {
-            ViewTypes.ITEM.code -> NewsViewHolder(NewsItem2ColumnsBinding.inflate(parent.context.layoutInflater))
+            ViewTypes.ITEM.code -> NewsViewHolder(NewsItem2ColumnsBinding.inflate(parent.context.inflater()))
             else -> ProgressViewHolder(parent.inflate(R.layout.list_item_progress))
         }
 
