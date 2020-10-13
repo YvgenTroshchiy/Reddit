@@ -22,7 +22,7 @@ buildscript {
 //    def android_gradle_plugin = (isCanary() ? '4.0.0-alpha09' : '3.6.1')
 //    ext.kotlin_version = (isCanary ? '1.3.70' : '1.3.70')
 
-    def android_gradle_plugin = '4.0.1'
+    def android_gradle_plugin = '4.1.0'
     ext.kotlin_version = '1.4.10'
 
     repositories {
