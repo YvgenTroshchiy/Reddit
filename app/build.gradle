@@ -73,14 +73,13 @@ dependencies {
     // endregion
 
     // region Kotlin Utilities
-    implementation 'org.jetbrains.anko:anko:0.10.8'
     // endregion
 
     // region Androidx
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation "androidx.paging:paging-runtime:$paging_version"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation "android.arch.lifecycle:extensions:$arch_components_version"
     implementation "android.arch.lifecycle:reactivestreams:$arch_components_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
@@ -100,10 +99,10 @@ dependencies {
 
     // region Network
     implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
     implementation "androidx.work:work-runtime-ktx:$work_version"
     // endregion
 
@@ -123,9 +122,9 @@ dependencies {
     // endregion
 
     // region Firebase
-    implementation 'com.google.firebase:firebase-core:17.5.0'
+    implementation 'com.google.firebase:firebase-core:17.5.1'
     implementation 'com.google.firebase:firebase-crashlytics:17.2.2'
-    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-analytics:17.6.0'
     // endregion
 
     // region Tests
