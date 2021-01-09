@@ -66,24 +66,26 @@ class NewsDetailsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
-            R.id.menu_save -> {
-                logD(tag, "Save Image")
-
-                if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
-                    toast("External storage not mounted!")
-                } else {
-                    val request = DownloadManager.Request(Uri.parse(intent.imageUrl))
-                        .setTitle(intent.title)
-                        .setDescription("Downloading")
-                        .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                        .setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES, intent.title + ".png")
-
-                    (getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager).enqueue(request)
-                }
-                true
-            }
+            R.id.menu_save -> downloadImage()
             else -> false
         }
+
+    private fun downloadImage(): Boolean {
+        logD(tag, "Save Image")
+
+        if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
+            toast("External storage not mounted!")
+        } else {
+            val request = DownloadManager.Request(Uri.parse(intent.imageUrl))
+                .setTitle(intent.title)
+                .setDescription("Downloading")
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES, intent.title + ".png")
+
+            (getSystemService(DOWNLOAD_SERVICE) as DownloadManager).enqueue(request)
+        }
+        return true
+    }
 
     // TODO: Create VM. Set Placeholder
     private fun showImage() {
