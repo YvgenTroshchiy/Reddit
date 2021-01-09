@@ -7,13 +7,14 @@
     android:layout_marginStart="@dimen/card_half_side_margin"
     android:layout_marginEnd="@dimen/card_half_side_margin"
     android:layout_marginBottom="@dimen/card_side_margin"
-    app:elevation="4dp">
+    android:elevation="6dp">
+    <!--    app:contentPadding="6dp" cause border by pressing state-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground"
-        tools:background="#FFBBBB">
+        android:padding="6dp">
 
         <!-- title -->
         <TextView
