@@ -8,7 +8,7 @@ import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.inflate
 import com.troshchii.reddit.core.extensions.inflater
 import com.troshchii.reddit.core.extensions.setImageUrl
-import com.troshchii.reddit.databinding.NewsItem2ColumnsBinding
+import com.troshchii.reddit.databinding.ListItemNewsBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import java.util.LinkedList
 
@@ -40,7 +40,7 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         when (viewType) {
-            ViewTypes.ITEM.code -> NewsViewHolder(NewsItem2ColumnsBinding.inflate(parent.context.inflater()))
+            ViewTypes.ITEM.code -> NewsViewHolder(ListItemNewsBinding.inflate(parent.context.inflater(), parent, false))
             else -> ProgressViewHolder(parent.inflate(R.layout.list_item_progress))
         }
 
@@ -49,7 +49,7 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
         (holder as? NewsViewHolder)?.bind(news[position])
     }
 
-    inner class NewsViewHolder(private val binding: NewsItem2ColumnsBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class NewsViewHolder(private val binding: ListItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(news: RedditPost) {
             binding.root.setOnClickListener { itemClick.invoke(news) }
 

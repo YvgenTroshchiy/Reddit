@@ -17,7 +17,7 @@ import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
 import com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity
 import com.troshchii.reddit.ui.topnews.data.RedditPost
-import kotlinx.android.synthetic.main.news_item_2_columns.*
+import kotlinx.android.synthetic.main.newsdetails_activity.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TopNewsFragment : Fragment() {

@@ -10,7 +10,13 @@
         android:id="@+id/newsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/news_item_2_columns" />
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/card_half_side_margin"
+        android:paddingTop="@dimen/card_side_margin"
+        android:paddingEnd="@dimen/card_half_side_margin"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/list_item_news" />
 
     <ProgressBar
         android:id="@+id/progressBar"
