@@ -13,7 +13,7 @@ import com.troshchii.reddit.ui.topnews.data.RedditPost
 import java.util.LinkedList
 
 
-class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TopNewsAdapter(private val itemClick: (RedditPost, View) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var news: List<RedditPost> = LinkedList()
         set(value) {
@@ -51,7 +51,7 @@ class TopNewsAdapter(private val itemClick: (RedditPost) -> Unit) : RecyclerView
 
     inner class NewsViewHolder(private val binding: ListItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(news: RedditPost) {
-            binding.root.setOnClickListener { itemClick.invoke(news) }
+            binding.root.setOnClickListener { itemClick.invoke(news, binding.root) }
 
             binding.title.text = news.title
             binding.image.setImageUrl(news.thumbnail)

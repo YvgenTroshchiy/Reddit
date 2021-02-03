@@ -21,7 +21,6 @@ import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
 import com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity
 import com.troshchii.reddit.ui.topnews.data.RedditPost
-import kotlinx.android.synthetic.main.newsdetails_activity.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TopNewsFragment : Fragment() {
@@ -74,7 +73,7 @@ class TopNewsFragment : Fragment() {
     }
 
     private fun setupNewsList() {
-        topNewsAdapter = TopNewsAdapter { openDetailsActivity(it) }
+        topNewsAdapter = TopNewsAdapter { redditPost, view -> openDetailsActivity(redditPost, view) }
 
         with(binding.newsList) {
             val layoutManager = GridLayoutManager(context, 2)
@@ -106,11 +105,11 @@ class TopNewsFragment : Fragment() {
         }
     }
 
-    private fun openDetailsActivity(it: RedditPost) {
+    private fun openDetailsActivity(it: RedditPost, view: View) {
         logI(logTag, "Click to the: ${it.title}, ${it.imageUrl}")
 
         val intent = NewsDetailsActivity.newIntent(requireContext(), it.title, it.imageUrl)
-        val pair: Pair<View, String> = Pair.create(image, getString(R.string.transition_image))
+        val pair: Pair<View, String> = Pair.create(view, getString(R.string.transition_image))
         val activityOptions = makeSceneTransitionAnimation(requireActivity(), pair)
 
         startActivity(intent, activityOptions.toBundle())
