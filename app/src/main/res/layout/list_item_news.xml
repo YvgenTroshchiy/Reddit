@@ -7,8 +7,7 @@
     android:layout_marginStart="@dimen/card_half_side_margin"
     android:layout_marginEnd="@dimen/card_half_side_margin"
     android:layout_marginBottom="@dimen/card_side_margin"
-    android:elevation="6dp">
-    <!--    app:contentPadding="6dp" cause border by pressing state-->
+    app:cardElevation="6dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
