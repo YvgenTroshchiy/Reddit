@@ -10,6 +10,7 @@ Top news|News details
 * Pagination
 * Rotation support
 * Show full image in Details Screen
+* Shared element transition
 * Download image
 * Dark Theme
 * Custom font
@@ -17,11 +18,10 @@ Top news|News details
 ### WIP
 
 ### TODO
+* Play gif animation/video on details
 * Room
 * Navigation library
 * Pagination library
-* Play gif animation/video on details
-* Add Card view transition
 * Image placeholder
 * Modularization
 
