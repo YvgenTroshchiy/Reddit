@@ -66,6 +66,10 @@ class NewsDetailsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
+            android.R.id.home -> {
+                finishAfterTransition()
+                true
+            }
             R.id.menu_save -> downloadImage()
             else -> false
         }
