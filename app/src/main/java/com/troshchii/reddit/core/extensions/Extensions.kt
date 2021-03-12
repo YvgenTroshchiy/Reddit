@@ -62,6 +62,7 @@ fun ImageView.setImageUrl(url: String?) {
     url?.let {
         Glide.with(context)
             .load(it)
+//            .skipMemoryCache(true)
             .apply(RequestOptions.noTransformation())
             .into(this)
     } ?: run {
