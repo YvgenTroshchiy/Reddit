@@ -1,16 +1,21 @@
 package com.troshchii.reddit.core.extensions
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
 import androidx.annotation.WorkerThread
+import androidx.core.content.res.use
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -67,5 +72,20 @@ fun ImageView.setImageUrl(url: String?) {
             .into(this)
     } ?: run {
         // TODO: Show placeholder
+    }
+}
+
+/**
+ * Retrieve a color from the current [android.content.res.Resources.Theme].
+ */
+@ColorInt
+@SuppressLint("Recycle")
+fun Context.themeColor(
+    @AttrRes themeAttrId: Int
+): Int {
+    return obtainStyledAttributes(
+        intArrayOf(themeAttrId)
+    ).use {
+        it.getColor(0, Color.MAGENTA)
     }
 }
