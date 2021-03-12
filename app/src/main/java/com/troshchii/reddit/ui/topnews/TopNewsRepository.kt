@@ -9,8 +9,7 @@ import com.troshchii.reddit.domain.TopNewsUseCase
 import com.troshchii.reddit.network.RedditService
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import com.troshchii.reddit.ui.topnews.data.toTopNews
-import java.util.*
-
+import java.util.LinkedList
 
 class TopNewsRepository(
 //    private val topNewsUseCase: TopNewsUseCase,

@@ -6,7 +6,6 @@ import androidx.lifecycle.Observer
 import com.troshchii.reddit.core.exception.Failure
 import io.reactivex.*
 
-
 inline fun <reified VM : ViewModel> AppCompatActivity.viewModel(
     factory: ViewModelProvider.Factory
 ): VM = ViewModelProviders.of(this, factory)[VM::class.java]

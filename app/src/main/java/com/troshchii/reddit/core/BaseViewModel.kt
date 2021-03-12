@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.troshchii.reddit.core.extensions.logI
 
-
 abstract class BaseViewModel : ViewModel() {
 
     protected var tag: String = this::class.java.simpleName

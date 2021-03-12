@@ -4,7 +4,6 @@ import android.os.StrictMode
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
-
 fun setStrictMode() {
     StrictMode.setThreadPolicy(
         StrictMode.ThreadPolicy.Builder()

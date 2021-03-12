@@ -8,10 +8,8 @@ import com.troshchii.reddit.network.RedditService
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import com.troshchii.reddit.ui.topnews.data.toTopNews
 
-
 //const val LIMIT = 25
 const val LIMIT = 12
-
 
 class TopNewsUseCase(private val service: RedditService) : UseCase<List<RedditPost>, String>() {
 

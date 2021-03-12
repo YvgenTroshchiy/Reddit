@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import com.troshchii.reddit.core.extensions.setImageUrl
 import com.troshchii.reddit.databinding.NewsdetailsFragmentBinding
 
 class NewsDetailsFragments : Fragment() {
@@ -19,6 +21,7 @@ class NewsDetailsFragments : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//       binding.image.setImageUrl()
+        val safeArgs: NewsDetailsFragmentsArgs by navArgs()
+        binding.image.setImageUrl(safeArgs.url)
     }
 }

@@ -12,7 +12,6 @@ import com.troshchii.reddit.databinding.ListItemNewsBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import java.util.LinkedList
 
-
 class TopNewsAdapter(private val itemClick: (RedditPost, View) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var news: List<RedditPost> = LinkedList()

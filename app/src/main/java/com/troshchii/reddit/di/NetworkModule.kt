@@ -19,9 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit.SECONDS
 
-
 private const val TIMEOUT = 30L
-
 
 val networkModule = module {
     single { redditService(get()) }

@@ -11,9 +11,7 @@ import com.troshchii.reddit.core.utils.debugDelayAsync
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import kotlinx.coroutines.launch
 
-
 private const val VISIBLE_THRESHOLD = 5
-
 
 class TopNewsViewModel constructor(private val repository: TopNewsRepository) : BaseViewModel() {
 
