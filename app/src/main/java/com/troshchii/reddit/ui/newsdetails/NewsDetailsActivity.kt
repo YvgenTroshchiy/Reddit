@@ -15,7 +15,7 @@ import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logD
 import com.troshchii.reddit.core.extensions.setImageUrl
 import com.troshchii.reddit.core.extensions.toast
-import kotlinx.android.synthetic.main.newsdetails_activity.*
+import kotlinx.android.synthetic.main.newsdetails_fragment.*
 
 private const val EXTRA_TITLE = "extra_title"
 private const val EXTRA_URL = "extra_url"
@@ -48,7 +48,7 @@ class NewsDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.newsdetails_activity)
+        setContentView(R.layout.newsdetails_fragment)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 

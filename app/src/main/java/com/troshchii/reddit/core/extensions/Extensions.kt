@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 private const val TAG = "Extension"
 
@@ -61,6 +62,7 @@ fun ImageView.setImageUrl(url: String?) {
     url?.let {
         Glide.with(context)
             .load(it)
+            .apply(RequestOptions.noTransformation())
             .into(this)
     } ?: run {
         // TODO: Show placeholder

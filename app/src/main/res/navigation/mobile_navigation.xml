@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/topNewsFragment">
+
+    <fragment
+        android:id="@+id/topNewsFragment"
+        android:name="com.troshchii.reddit.ui.topnews.TopNewsFragment"
+        android:label="TopNewsFragment" >
+        <action
+            android:id="@+id/action_topNewsFragment_to_newsDetailsFragments"
+            app:destination="@id/newsDetailsFragments" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailsFragments"
+        android:name="com.troshchii.reddit.ui.newsdetails.NewsDetailsFragments"
+        android:label="NewsDetailsFragments" />
+</navigation>
