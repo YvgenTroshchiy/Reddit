@@ -34,13 +34,13 @@ class NewsDetailsFragments : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = NewsdetailsFragmentBinding.inflate(inflater, container, false)
-        binding.image.transitionName = safeArgs.url
+        binding.image.transitionName = safeArgs.post.imageUrl
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.image.setImageUrl(safeArgs.url)
+        binding.image.setImageUrl(safeArgs.post.imageUrl)
     }
 }

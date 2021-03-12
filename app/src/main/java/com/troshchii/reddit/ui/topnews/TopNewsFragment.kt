@@ -127,7 +127,7 @@ class TopNewsFragment : Fragment() {
         view.transitionName = it.imageUrl
 
         val extras = FragmentNavigatorExtras(view to it.imageUrl)
-        val action = TopNewsFragmentDirections.actionTopNewsFragmentToNewsDetailsFragments(it.imageUrl, it.title)
+        val action = TopNewsFragmentDirections.actionTopNewsFragmentToNewsDetailsFragments(it)
 
         findNavController().navigate(action, extras)
     }
