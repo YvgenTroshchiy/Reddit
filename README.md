@@ -20,7 +20,6 @@ Top news|News details
 ### TODO
 * Play gif animation/video on details
 * Room
-* Navigation library
 * Pagination library
 * Image placeholder
 * Modularization
@@ -31,6 +30,7 @@ Top news|News details
 * Android architecture components
     * ViewModel
     * LiveData
+* Navigation library
 * ViewBinding
 * Koin 2
 * Coroutines
