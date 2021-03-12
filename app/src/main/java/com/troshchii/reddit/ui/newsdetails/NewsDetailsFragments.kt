@@ -12,10 +12,13 @@ import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.setImageUrl
 import com.troshchii.reddit.core.extensions.themeColor
 import com.troshchii.reddit.databinding.NewsdetailsFragmentBinding
+import com.troshchii.reddit.ui.topnews.data.RedditPost
+import kotlin.LazyThreadSafetyMode.NONE
 
 class NewsDetailsFragments : Fragment() {
 
     private val safeArgs: NewsDetailsFragmentsArgs by navArgs()
+    private val post: RedditPost by lazy(NONE) { safeArgs.post }
 
     private lateinit var binding: NewsdetailsFragmentBinding
 
@@ -34,13 +37,13 @@ class NewsDetailsFragments : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = NewsdetailsFragmentBinding.inflate(inflater, container, false)
-        binding.image.transitionName = safeArgs.post.imageUrl
+        binding.image.transitionName = post.imageUrl
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.image.setImageUrl(safeArgs.post.imageUrl)
+        binding.image.setImageUrl(post.imageUrl)
     }
 }
