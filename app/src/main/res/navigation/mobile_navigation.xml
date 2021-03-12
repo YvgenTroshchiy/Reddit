@@ -14,5 +14,12 @@
     <fragment
         android:id="@+id/newsDetailsFragments"
         android:name="com.troshchii.reddit.ui.newsdetails.NewsDetailsFragments"
-        android:label="NewsDetailsFragments" />
+        android:label="NewsDetailsFragments" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>

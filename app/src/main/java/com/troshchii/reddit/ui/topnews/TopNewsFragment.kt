@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityOptionsCompat.makeSceneTransitionAnimation
-import androidx.core.util.Pair
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.transition.MaterialElevationScale
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logI
@@ -19,7 +21,6 @@ import com.troshchii.reddit.core.extensions.observe
 import com.troshchii.reddit.core.extensions.toast
 import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
-import com.troshchii.reddit.ui.newsdetails.NewsDetailsActivity
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -41,6 +42,14 @@ class TopNewsFragment : Fragment() {
         logI(logTag, "onCreateView")
         binding = TopnewsFragmentBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        logI(logTag, "onViewCreated")
+
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -108,10 +117,18 @@ class TopNewsFragment : Fragment() {
     private fun openDetailsActivity(it: RedditPost, view: View) {
         logI(logTag, "Click to the: ${it.title}, ${it.imageUrl}")
 
-        val intent = NewsDetailsActivity.newIntent(requireContext(), it.title, it.imageUrl)
-        val pair: Pair<View, String> = Pair.create(view, getString(R.string.transition_image))
-        val activityOptions = makeSceneTransitionAnimation(requireActivity(), pair)
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+        }
+        reenterTransition = MaterialElevationScale(true).apply {
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+        }
 
-        startActivity(intent, activityOptions.toBundle())
+        view.transitionName = it.imageUrl
+
+        val extras = FragmentNavigatorExtras(view to it.imageUrl)
+        val action = TopNewsFragmentDirections.actionTopNewsFragmentToNewsDetailsFragments(it.imageUrl, it.title)
+
+        findNavController().navigate(action, extras)
     }
 }
