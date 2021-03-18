@@ -50,6 +50,7 @@ class TopNewsAdapter(private val itemClick: (RedditPost, View) -> Unit) : Recycl
 
     inner class NewsViewHolder(private val binding: ListItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(news: RedditPost) {
+            binding.root.transitionName = news.thumbnail
             binding.root.setOnClickListener { itemClick.invoke(news, binding.root) }
 
             binding.title.text = news.title

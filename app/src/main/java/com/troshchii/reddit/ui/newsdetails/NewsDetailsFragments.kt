@@ -37,7 +37,6 @@ class NewsDetailsFragments : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = NewsdetailsFragmentBinding.inflate(inflater, container, false)
-        binding.image.transitionName = post.imageUrl
         return binding.root
     }
 
