@@ -16,7 +16,7 @@ class TopNewsRepository(
     private val service: RedditService
 ) {
 
-    private val tag = getLogTag<TopNewsUseCase>()
+    private val tag = getLogTag<TopNewsRepository>()
 
     // It's kinda DataSource
     private val topNewsList: LinkedList<RedditPost> = LinkedList()
