@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.troshchii.reddit.core.extensions.logI
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 abstract class BaseViewModel : ViewModel() {
 
@@ -21,6 +23,10 @@ abstract class BaseViewModel : ViewModel() {
     protected fun <T> LiveData<T>.postUpdate(value: T?) {
         (this as MutableLiveData).postValue(value)
     }
+
+//    protected fun <T> StateFlow<T>.postUpdate(value: T?) {
+//        (this as MutableStateFlow).postValue(value)
+//    }
 
     protected fun <T> LiveData<Event<T>>.postEvent(value: T) {
         (this as MutableLiveData).postValue(Event(value))
