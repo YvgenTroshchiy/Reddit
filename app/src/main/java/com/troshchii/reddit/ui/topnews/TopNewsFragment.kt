@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -27,6 +28,7 @@ import com.troshchii.reddit.databinding.TopnewsFragmentBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TopNewsFragment : Fragment() {
@@ -64,24 +66,26 @@ class TopNewsFragment : Fragment() {
 
         setupNewsList()
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.topNews.collect(object : FlowCollector<Async<List<RedditPost>>> {
-                override suspend fun emit(it: Async<List<RedditPost>>) {
-                    when (it) {
-                        is Fail -> {
-                            logW(logTag, "Error: $it")
-                            context?.toast("${it.error.message}", Toast.LENGTH_LONG)
-                        }
-                        is Success -> {
-                            logI(logTag, "Success")
-                            topNewsAdapter.news = it.invoke()
-                        }
-                        else -> {
+        lifecycleScope.launch {
+            viewModel.topNews
+                .flowWithLifecycle(lifecycle)
+                .collect(object : FlowCollector<Async<List<RedditPost>>> {
+                    override suspend fun emit(it: Async<List<RedditPost>>) {
+                        when (it) {
+                            is Fail -> {
+                                logW(logTag, "Error: $it")
+                                context?.toast("${it.error.message}", Toast.LENGTH_LONG)
+                            }
+                            is Success -> {
+                                logI(logTag, "Success")
+                                topNewsAdapter.news = it.invoke()
+                            }
+                            else -> {
 
+                            }
                         }
                     }
-                }
-            })
+                })
         }
 
         viewLifecycleOwner.observe(viewModel.isLoading) {
