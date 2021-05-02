@@ -3,13 +3,12 @@ package com.troshchii.reddit.core
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logI
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 
 abstract class BaseViewModel : ViewModel() {
 
-    protected var tag: String = this::class.java.simpleName
+    protected var tag: String = getLogTag<BaseViewModel>()
 
     init {
         logI(tag, "init")
