@@ -1,6 +1,5 @@
 package com.troshchii.reddit.core
 
-import com.troshchii.reddit.core.functional.Either
 import java.util.Arrays
 
 /**
@@ -67,22 +66,22 @@ data class Fail<out T>(val error: Throwable, private val value: T? = null) : Asy
  */
 interface Incomplete
 
-//fun <T> Either<T>.toAsync(): Async<T> {
+//fun <L, R> Either<L, R>.toAsync(): Async<R> {
 //    return when (this) {
-//        is Either.Left<Any> -> Fail(this.exception)
-//        is Either.Right<Any> -> Success(this.data)
+//        is Either.Left -> Fail(left)
+//        is Either.Right -> Success(data)
 //    }
 //}
 
 //TODO: replace with Either
 fun <T> NetworkResult<T>.toAsync(): Async<T> {
     return when (this) {
-        is NetworkResult.Success -> Success(this.data)
-        is NetworkResult.Error -> Fail(this.exception)
+        is NetworkResult.Error -> Fail(exception)
+        is NetworkResult.Success -> Success(data)
     }
 }
 
 sealed class NetworkResult<out T> {
-    data class Success<out T>(val data: T) : NetworkResult<T>()
     data class Error(val exception: Throwable) : NetworkResult<Nothing>()
+    data class Success<out T>(val data: T) : NetworkResult<T>()
 }
