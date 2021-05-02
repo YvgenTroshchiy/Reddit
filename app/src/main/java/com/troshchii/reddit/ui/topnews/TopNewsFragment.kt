@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.MaterialElevationScale
 import com.troshchii.reddit.R
-import com.troshchii.reddit.core.Async
 import com.troshchii.reddit.core.Fail
 import com.troshchii.reddit.core.Success
 import com.troshchii.reddit.core.extensions.getLogTag
@@ -26,8 +25,7 @@ import com.troshchii.reddit.core.extensions.observe
 import com.troshchii.reddit.core.extensions.toast
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
-import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -59,7 +57,6 @@ class TopNewsFragment : Fragment() {
         view.doOnPreDraw { startPostponedEnterTransition() }
     }
 
-    @OptIn(InternalCoroutinesApi::class)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         logI(logTag, "onActivityCreated")
@@ -69,23 +66,21 @@ class TopNewsFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.topNews
                 .flowWithLifecycle(lifecycle)
-                .collect(object : FlowCollector<Async<List<RedditPost>>> {
-                    override suspend fun emit(it: Async<List<RedditPost>>) {
-                        when (it) {
-                            is Fail -> {
-                                logW(logTag, "Error: $it")
-                                context?.toast("${it.error.message}", Toast.LENGTH_LONG)
-                            }
-                            is Success -> {
-                                logI(logTag, "Success")
-                                topNewsAdapter.news = it.invoke()
-                            }
-                            else -> {
+                .collect {
+                    when (it) {
+                        is Fail -> {
+                            logW(logTag, "Error: $it")
+                            context?.toast("${it.error.message}", Toast.LENGTH_LONG)
+                        }
+                        is Success -> {
+                            logI(logTag, "Success")
+                            topNewsAdapter.news = it.invoke()
+                        }
+                        else -> {
 
-                            }
                         }
                     }
-                })
+                }
         }
 
         viewLifecycleOwner.observe(viewModel.isLoading) {
