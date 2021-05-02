@@ -25,17 +25,16 @@ Top news|News details
 * Modularization
 
 ## Technologies, Components
-* Kotlin
 * MVVM
+* Kotlin, Coroutines, Flow
 * Android architecture components
     * ViewModel
-    * LiveData
+    * <s>LiveData</s>. Was replaced by Flow.
 * Navigation library
 * ViewBinding
 * Koin 2
-* Coroutines
-* Retrofit
 * MaterialCardView
+* Retrofit
 
 ## Other
 * DataBinding was removed because I strongly against about it.

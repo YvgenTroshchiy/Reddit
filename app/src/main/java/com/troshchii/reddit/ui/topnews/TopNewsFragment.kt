@@ -64,19 +64,6 @@ class TopNewsFragment : Fragment() {
 
         setupNewsList()
 
-//        viewLifecycleOwner.observe(viewModel.topNews) {
-//            when (it) {
-//                is Either.Left -> {
-//                    logW(logTag, "Error: $it")
-//                    context?.toast("${it.left}", Toast.LENGTH_LONG)
-//                }
-//                is Either.Right -> {
-//                    logI(logTag, "Success")
-//                    topNewsAdapter.news = it.right
-//                }
-//            }
-//        }
-
         lifecycleScope.launchWhenStarted {
             viewModel.topNews.collect(object : FlowCollector<Async<List<RedditPost>>> {
                 override suspend fun emit(it: Async<List<RedditPost>>) {
