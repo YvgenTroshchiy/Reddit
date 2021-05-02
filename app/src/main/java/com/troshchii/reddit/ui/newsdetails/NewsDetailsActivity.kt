@@ -32,7 +32,7 @@ private var Intent.imageUrl: String?
         putExtra(EXTRA_URL, value)
     }
 
-//TODO: convert to fragment and use navigation library
+//TODO: Obsolete. moved to the NewsDetailsFragments. Move download code to the fragment
 class NewsDetailsActivity : AppCompatActivity() {
 
     private val tag = getLogTag<NewsDetailsActivity>()
