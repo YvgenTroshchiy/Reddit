@@ -2,10 +2,11 @@ package com.troshchii.reddit.ui.newsdetails
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.transition.MaterialContainerTransform
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.extensions.setImageUrl
@@ -19,7 +20,7 @@ class NewsDetailsFragments : Fragment() {
     private val safeArgs: NewsDetailsFragmentsArgs by navArgs()
     private val post: RedditPost by lazy(NONE) { safeArgs.post }
 
-    private val binding by viewBinding(NewsdetailsFragmentBinding::bind)
+    private lateinit var binding: NewsdetailsFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,11 @@ class NewsDetailsFragments : Fragment() {
             scrimColor = Color.TRANSPARENT
             setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
         }
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = NewsdetailsFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

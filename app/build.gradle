@@ -75,7 +75,6 @@ dependencies {
     // endregion
 
     // region Others
-    implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.4.4'
     // endregion
 
     // region Androidx

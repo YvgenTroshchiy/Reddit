@@ -1,7 +1,9 @@
 package com.troshchii.reddit.ui.topnews
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
@@ -12,7 +14,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.transition.MaterialElevationScale
 import com.troshchii.reddit.R
 import com.troshchii.reddit.core.Fail
@@ -32,7 +33,7 @@ class TopNewsFragment : Fragment() {
 
     private val logTag = getLogTag<TopNewsFragment>()
 
-    private val binding by viewBinding(TopnewsFragmentBinding::bind)
+    private lateinit var binding: TopnewsFragmentBinding
     private val viewModel: TopNewsViewModel by viewModel()
 
     private lateinit var topNewsAdapter: TopNewsAdapter
@@ -42,12 +43,23 @@ class TopNewsFragment : Fragment() {
         logI(logTag, "onCreate")
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        logI(logTag, "onCreateView")
+        binding = TopnewsFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         logI(logTag, "onViewCreated")
 
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        logI(logTag, "onActivityCreated")
 
         setupNewsList()
 
