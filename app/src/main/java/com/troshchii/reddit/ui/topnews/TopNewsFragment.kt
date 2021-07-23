@@ -55,11 +55,6 @@ class TopNewsFragment : Fragment() {
 
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        logI(logTag, "onActivityCreated")
 
         setupNewsList()
 
