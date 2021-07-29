@@ -21,7 +21,9 @@
             android:name="io.fabric.ApiKey"
             android:value="4467d3e10f180582b93bf063b12c45269f02c3fc" />
 
-        <activity android:name=".ui.topnews.TopNewsActivity">
+        <activity
+            android:name=".ui.topnews.TopNewsActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
