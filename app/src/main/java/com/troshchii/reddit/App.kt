@@ -6,7 +6,6 @@ import com.troshchii.reddit.di.allAppModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-
 class App : Application() {
 
     override fun onCreate() {

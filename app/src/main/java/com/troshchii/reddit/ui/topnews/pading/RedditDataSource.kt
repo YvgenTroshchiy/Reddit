@@ -3,7 +3,6 @@ package com.troshchii.reddit.ui.topnews.pading
 import androidx.paging.PageKeyedDataSource
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 
-
 class RedditDataSource : PageKeyedDataSource<String, RedditPost>() {
 
     override fun loadInitial(params: LoadInitialParams<String>, callback: LoadInitialCallback<String, RedditPost>) {
