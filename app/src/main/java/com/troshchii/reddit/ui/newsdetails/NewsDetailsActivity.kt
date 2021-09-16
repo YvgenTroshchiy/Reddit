@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import com.troshchii.reddit.R
@@ -15,7 +16,6 @@ import com.troshchii.reddit.core.extensions.getLogTag
 import com.troshchii.reddit.core.extensions.logD
 import com.troshchii.reddit.core.extensions.setImageUrl
 import com.troshchii.reddit.core.extensions.toast
-import kotlinx.android.synthetic.main.newsdetails_fragment.*
 
 private const val EXTRA_TITLE = "extra_title"
 private const val EXTRA_URL = "extra_url"
@@ -37,6 +37,8 @@ class NewsDetailsActivity : AppCompatActivity() {
 
     private val tag = getLogTag<NewsDetailsActivity>()
 
+    private var image: ImageView? = null
+
     companion object {
         fun newIntent(context: Context, title: String, imageUrl: String): Intent {
             return Intent(context, NewsDetailsActivity::class.java).apply {
@@ -55,6 +57,8 @@ class NewsDetailsActivity : AppCompatActivity() {
         //TODO: update
         supportActionBar?.title = intent.title
         supportActionBar?.subtitle = intent.title
+
+        image = findViewById(R.id.image)
 
         showImage()
     }
@@ -95,7 +99,7 @@ class NewsDetailsActivity : AppCompatActivity() {
     private fun showImage() {
         intent.imageUrl?.let {
             val url = HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            image.setImageUrl(url.toString())
+            image?.setImageUrl(url.toString())
         }
     }
 
