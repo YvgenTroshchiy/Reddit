@@ -3,8 +3,8 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
     id 'project-report' // To be able run "./gradlew dependencyReport"
 }
@@ -42,7 +42,9 @@ android {
         jvmTarget = "11"
     }
 
-    viewBinding { enabled = true }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 ext {
@@ -53,7 +55,7 @@ ext {
     coroutineVersion = "1.5.1"
     lifecycle_version = "2.2.0"
     arrow_version = "0.10.4"
-    work_version = "2.5.0"
+    work_version = "2.6.0"
 }
 
 kapt {
@@ -91,7 +93,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha03"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+//    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
 
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
@@ -114,7 +116,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.8.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     implementation 'com.squareup.moshi:moshi:1.12.0'
     kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.12.0'
     implementation 'com.google.code.gson:gson:2.8.7'
@@ -137,9 +139,9 @@ dependencies {
     // endregion
 
     // region Firebase
-    implementation 'com.google.firebase:firebase-core:19.0.0'
-    implementation 'com.google.firebase:firebase-crashlytics:18.2.0'
-    implementation 'com.google.firebase:firebase-analytics:19.0.0'
+    implementation 'com.google.firebase:firebase-core:19.0.1'
+    implementation 'com.google.firebase:firebase-crashlytics:18.2.1'
+    implementation 'com.google.firebase:firebase-analytics:19.0.1'
     // endregion
 
     // region Tests
