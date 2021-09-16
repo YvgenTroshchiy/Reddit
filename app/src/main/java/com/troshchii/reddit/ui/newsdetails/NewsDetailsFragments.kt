@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.transition.MaterialContainerTransform
 import com.troshchii.reddit.R
+import com.google.android.material.R as MaterialR
 import com.troshchii.reddit.core.extensions.setImageUrl
 import com.troshchii.reddit.core.extensions.themeColor
 import com.troshchii.reddit.databinding.NewsdetailsFragmentBinding
@@ -31,7 +32,7 @@ class NewsDetailsFragments : Fragment() {
 //            drawingViewId = R.id.fragment_container
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             scrimColor = Color.TRANSPARENT
-            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
+            setAllContainerColors(requireContext().themeColor(MaterialR.attr.colorSurface))
         }
     }
 
