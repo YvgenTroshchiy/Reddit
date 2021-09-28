@@ -79,6 +79,8 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
     // endregion
 
+//    implementation project(':core')
+
     // region Others
     // endregion
 
@@ -90,9 +92,9 @@ dependencies {
 
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-alpha03"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-alpha03"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha03"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-beta01"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-beta01"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-beta01"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
 //    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
