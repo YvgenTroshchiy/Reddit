@@ -1,4 +1,4 @@
-package com.troshchii.reddit
+package com.troshchii.reddit.core
 
 import org.junit.Test
 
