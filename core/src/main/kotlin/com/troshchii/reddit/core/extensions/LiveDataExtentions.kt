@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.*
 import androidx.lifecycle.Observer
 import com.troshchii.reddit.core.exception.Failure
-import io.reactivex.*
 
 inline fun <reified VM : ViewModel> AppCompatActivity.viewModel(
     factory: ViewModelProvider.Factory
@@ -13,14 +12,6 @@ inline fun <reified VM : ViewModel> AppCompatActivity.viewModel(
 inline fun <reified VM : ViewModel> AppCompatActivity.withViewModel(
     factory: ViewModelProvider.Factory, body: VM.() -> Unit
 ): VM = viewModel<VM>(factory).apply { body() }
-
-
-fun <T> Flowable<T>.toLiveData(): LiveData<T> = LiveDataReactiveStreams.fromPublisher(this)
-fun <T> Single<T>.toLiveData(): LiveData<T> = toFlowable().toLiveData()
-fun <T> Maybe<T>.toLiveData(): LiveData<T> = toFlowable().toLiveData()
-fun <T> Observable<T>.toLiveData(
-    strategy: BackpressureStrategy = BackpressureStrategy.MISSING
-): LiveData<T> = toFlowable(strategy).toLiveData()
 
 fun <T> LiveData<T>.startWith(value: T): LiveData<T> {
     val mediator = MediatorLiveData<T>()
