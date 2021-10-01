@@ -2,7 +2,7 @@ package com.troshchii.reddit.ui.topnews.data
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize data class TopNewsDto(
     @SerializedName("data") val listingData: ListingData
@@ -13,7 +13,7 @@ import kotlinx.android.parcel.Parcelize
         val dist: Int,
         val children: List<Children>,
         val after: String?,
-        val before: String?
+        val before: String?,
     ) : Parcelable {
 
         @Parcelize data class Children(
@@ -30,7 +30,8 @@ import kotlinx.android.parcel.Parcelize
                 val created_utc: String,
                 val numComments: String,
                 val url: String,
-                val media: Media?
+                val media: Media?,
+                val isVideo: Boolean,
             ) : Parcelable {
 
                 @Parcelize data class Preview(
