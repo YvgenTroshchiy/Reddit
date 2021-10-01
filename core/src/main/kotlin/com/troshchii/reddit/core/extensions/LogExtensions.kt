@@ -2,7 +2,7 @@ package com.troshchii.reddit.core.extensions
 
 import android.os.Looper
 import android.util.Log
-import com.troshchii.reddit.BuildConfig
+import com.troshchii.reddit.core.BuildConfig
 
 val production = !BuildConfig.DEBUG
 

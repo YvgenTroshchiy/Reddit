@@ -79,7 +79,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
     // endregion
 
-//    implementation project(':core')
+    implementation project(':core')
 
     // region Others
     // endregion
