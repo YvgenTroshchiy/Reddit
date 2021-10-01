@@ -1,8 +1,13 @@
 package com.troshchii.reddit.core.extensions
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.*
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.troshchii.reddit.core.exception.Failure
 
 inline fun <reified VM : ViewModel> AppCompatActivity.viewModel(
