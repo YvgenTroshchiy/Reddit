@@ -20,13 +20,12 @@ Top news|News details
 ### TODO
 * Play gif animation/video on details
 * Room
-* Pagination library
 * Image placeholder
-* Modularization
 
 ## Technologies, Components
 * MVVM
 * Kotlin, Coroutines, Flow
+* Multi-module
 * Android architecture components
     * ViewModel
     * <s>LiveData</s>. Was replaced by Flow.
@@ -36,9 +35,12 @@ Top news|News details
 * MaterialCardView
 * Retrofit
 
+## Maybe
+* Pagination library
+
 ## Other
 * DataBinding was removed because I strongly against about it.
 
-## In _dagger_ branch (Obsolete)
+## In _dagger_ branch (Obsolete and deleted)
 * Android Dagger 2
 * Rxjava 2
