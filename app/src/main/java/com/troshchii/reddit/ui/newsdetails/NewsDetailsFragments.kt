@@ -12,6 +12,7 @@ import com.troshchii.reddit.R
 import com.google.android.material.R as MaterialR
 import com.troshchii.reddit.core.extensions.setImageUrl
 import com.troshchii.reddit.core.extensions.themeColor
+import com.troshchii.reddit.core.utils.viewBinding
 import com.troshchii.reddit.databinding.NewsdetailsFragmentBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import kotlin.LazyThreadSafetyMode.NONE
@@ -21,7 +22,7 @@ class NewsDetailsFragments : Fragment() {
     private val safeArgs: NewsDetailsFragmentsArgs by navArgs()
     private val post: RedditPost by lazy(NONE) { safeArgs.post }
 
-    private lateinit var binding: NewsdetailsFragmentBinding
+    private var binding: NewsdetailsFragmentBinding by viewBinding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -23,6 +23,7 @@ import com.troshchii.reddit.core.extensions.logI
 import com.troshchii.reddit.core.extensions.logW
 import com.troshchii.reddit.core.extensions.observe
 import com.troshchii.reddit.core.extensions.toast
+import com.troshchii.reddit.core.utils.viewBinding
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import kotlinx.coroutines.flow.collect
@@ -33,7 +34,7 @@ class TopNewsFragment : Fragment() {
 
     private val logTag = getLogTag<TopNewsFragment>()
 
-    private lateinit var binding: TopnewsFragmentBinding
+    private var binding: TopnewsFragmentBinding by viewBinding()
     private val viewModel: TopNewsViewModel by viewModel()
 
     private lateinit var topNewsAdapter: TopNewsAdapter

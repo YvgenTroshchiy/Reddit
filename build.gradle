@@ -63,7 +63,7 @@ ext {
     nav_version = "2.3.5"
     paging_version = "3.0.1"
     coroutineVersion = "1.5.1"
-    lifecycle_version = "2.2.0"
+    lifecycle_version = "2.4.0-rc01"
     arrow_version = "0.10.4"
 
     // required to avoid crash on Android 12 API 31
