@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/topNewsFragment">
 
     <fragment
         android:id="@+id/topNewsFragment"
         android:name="com.troshchii.reddit.ui.topnews.TopNewsFragment"
-        android:label="TopNewsFragment" >
+        android:label="TopNewsFragment"
+        tools:layout="@layout/topnews_fragment">
         <action
             android:id="@+id/action_topNewsFragment_to_newsDetailsFragments"
             app:destination="@id/newsDetailsFragments" />
     </fragment>
+
     <fragment
         android:id="@+id/newsDetailsFragments"
         android:name="com.troshchii.reddit.ui.newsdetails.NewsDetailsFragments"
-        android:label="NewsDetailsFragments" >
+        android:label="NewsDetailsFragments"
+        tools:layout="@layout/newsdetails_fragment">
         <argument
             android:name="post"
             app:argType="com.troshchii.reddit.ui.topnews.data.RedditPost" />
     </fragment>
+
 </navigation>
