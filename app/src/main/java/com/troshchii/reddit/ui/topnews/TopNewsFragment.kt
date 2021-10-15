@@ -126,6 +126,11 @@ class TopNewsFragment : Fragment() {
     private fun openDetailsActivity(it: RedditPost, view: View) {
         logI(logTag, "Click to the: ${it.title}, ${it.imageUrl}")
 
+        if (it.isVideo) {
+            context?.toast("Sorry video is not supported yet")
+            return
+        }
+
         exitTransition = MaterialElevationScale(false).apply {
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }

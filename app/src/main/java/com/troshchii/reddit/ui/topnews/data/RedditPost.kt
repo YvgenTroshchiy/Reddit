@@ -10,5 +10,6 @@ import kotlinx.android.parcel.Parcelize
     val title: String,
     val author: String,
     val created_utc: String,
-    val numComments: String
+    val numComments: String,
+    val isVideo: Boolean,
 ) : Parcelable

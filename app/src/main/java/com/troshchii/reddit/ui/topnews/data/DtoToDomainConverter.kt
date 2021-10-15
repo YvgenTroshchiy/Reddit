@@ -12,6 +12,7 @@ private fun childrenToRedditPost(children: TopNewsDto.ListingData.Children): Red
         title = redditPost.title,
         author = redditPost.author,
         created_utc = redditPost.created_utc,
-        numComments = redditPost.numComments
+        numComments = redditPost.numComments,
+        isVideo = redditPost.isVideo,
     )
 }
