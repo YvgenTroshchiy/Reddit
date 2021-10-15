@@ -6,7 +6,7 @@ Top news|News details
 
 ## Features
 * Load top news from Reddit
-* Play gif animation in thumbnails
+* Play video on details
 * Pagination
 * Rotation support
 * Show full image in Details Screen
@@ -18,7 +18,8 @@ Top news|News details
 ### WIP
 
 ### TODO
-* Play gif animation/video on details
+* Play gif animation in thumbnails
+* Add sound to video (Reddit splits sound from video)
 * Room
 * Image placeholder
 
