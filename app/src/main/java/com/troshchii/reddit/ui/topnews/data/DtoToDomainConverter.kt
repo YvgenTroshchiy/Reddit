@@ -7,12 +7,14 @@ private fun childrenToRedditPost(children: TopNewsDto.ListingData.Children): Red
 
     return RedditPost(
         id = redditPost.id,
-        thumbnail = redditPost.media?.oembed?.thumbnailUrl ?: redditPost.thumbnail,
+        thumbnail = redditPost.thumbnail,
         imageUrl = redditPost.url,
         title = redditPost.title,
         author = redditPost.author,
         created_utc = redditPost.created_utc,
         numComments = redditPost.numComments,
         isVideo = redditPost.isVideo,
+        videoUrl = redditPost.media?.reddit_video?.scrubber_media_url,
+        fallbackVideoUrl = redditPost.media?.reddit_video?.fallback_url,
     )
 }

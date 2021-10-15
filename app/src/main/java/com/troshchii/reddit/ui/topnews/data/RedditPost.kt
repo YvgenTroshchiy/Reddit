@@ -12,4 +12,6 @@ import kotlinx.android.parcel.Parcelize
     val created_utc: String,
     val numComments: String,
     val isVideo: Boolean,
+    val videoUrl: String?,
+    val fallbackVideoUrl: String?,
 ) : Parcelable

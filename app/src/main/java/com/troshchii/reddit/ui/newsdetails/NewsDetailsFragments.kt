@@ -1,21 +1,25 @@
 package com.troshchii.reddit.ui.newsdetails
 
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.transition.MaterialContainerTransform
 import com.troshchii.reddit.R
-import com.google.android.material.R as MaterialR
+import com.troshchii.reddit.core.extensions.setGone
 import com.troshchii.reddit.core.extensions.setImageUrl
+import com.troshchii.reddit.core.extensions.setVisible
 import com.troshchii.reddit.core.extensions.themeColor
 import com.troshchii.reddit.core.utils.viewBinding
 import com.troshchii.reddit.databinding.NewsdetailsFragmentBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import kotlin.LazyThreadSafetyMode.NONE
+import com.google.android.material.R as MaterialR
 
 class NewsDetailsFragments : Fragment() {
 
@@ -45,6 +49,17 @@ class NewsDetailsFragments : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.image.setImageUrl(post.imageUrl)
+        if (post.isVideo) {
+            binding.image.setGone()
+            binding.videoView.setVisible()
+
+            binding.videoView.setVideoPath(post.fallbackVideoUrl)
+            binding.videoView.start()
+        } else {
+            binding.videoView.setGone()
+            binding.image.setVisible()
+
+            binding.image.setImageUrl(post.imageUrl)
+        }
     }
 }

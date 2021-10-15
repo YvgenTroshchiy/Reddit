@@ -24,6 +24,14 @@ import com.bumptech.glide.request.RequestOptions
 
 private const val TAG = "Extension"
 
+fun View.setVisible() {
+    visibility = View.VISIBLE
+}
+
+fun View.setGone() {
+    visibility = View.GONE
+}
+
 fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) =
     Toast.makeText(this, text, duration).show()
 

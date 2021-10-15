@@ -66,24 +66,13 @@ import kotlinx.parcelize.Parcelize
                 }
 
                 @Parcelize data class Media(
-                    val oembed: Oembed,
-                    val type: String
+                    val reddit_video: RedditVideo,
                 ) : Parcelable {
 
-                    @Parcelize data class Oembed(
-                        val providerUrl: String,
-                        val description: String,
-                        val title: String,
-                        val authorName: String,
-                        val height: Int,
-                        val width: Int,
-                        val html: String,
-                        val thumbnailWidth: Int,
-                        val version: String,
-                        val providerName: String,
-                        val thumbnailUrl: String,
-                        val type: String,
-                        val thumbnailHeight: Int
+                    @Parcelize data class RedditVideo(
+                        val scrubber_media_url: String,
+                        val fallback_url: String,
+                        val is_gif: Boolean,
                     ) : Parcelable
                 }
             }
