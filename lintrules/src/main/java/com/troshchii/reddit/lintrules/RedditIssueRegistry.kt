@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 package com.troshchii.reddit.lintrules
 
 import com.android.tools.lint.client.api.IssueRegistry
