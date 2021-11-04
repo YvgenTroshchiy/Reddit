@@ -61,7 +61,7 @@ dependencies {
     // endregion
 
     // region Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
     // endregion
@@ -72,7 +72,7 @@ dependencies {
     // endregion
 
     // region Androidx
-    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
 
     implementation "android.arch.lifecycle:extensions:$arch_components_version"
     implementation "android.arch.lifecycle:reactivestreams:$arch_components_version"

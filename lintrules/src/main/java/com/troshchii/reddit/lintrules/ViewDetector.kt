@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 package com.troshchii.reddit.lintrules
 
 import com.android.tools.lint.detector.api.Category
@@ -16,6 +14,7 @@ import org.jetbrains.uast.UCallExpression
 private const val FIND_VIEW_BY_ID_METHOD = "findViewById"
 private const val FIND_VIEW_BY_ID_USAGE_MESSAGE = "findViewById should not be used"
 
+@Suppress("UnstableApiUsage")
 class ViewDetector : Detector(), SourceCodeScanner {
 
     override fun getApplicableMethodNames(): List<String> = listOf(FIND_VIEW_BY_ID_METHOD)
