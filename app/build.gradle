@@ -66,9 +66,12 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
     // endregion
 
+    // Modules
     implementation project(':core')
+    // endregion
 
     // region Others
+    lintPublish project(':lintrules')
     // endregion
 
     // region Androidx
@@ -121,6 +124,11 @@ dependencies {
 
     testImplementation "org.koin:koin-test:$koin_version"
     androidTestImplementation "org.koin:koin-test:$koin_version"
+    // endregion
+
+    // region Dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
     // endregion
 
     // region Arrow

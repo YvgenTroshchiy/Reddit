@@ -20,22 +20,18 @@ class ViewDetector : Detector(), SourceCodeScanner {
     override fun getApplicableMethodNames(): List<String> = listOf(FIND_VIEW_BY_ID_METHOD)
 
     override fun visitMethodCall(context: JavaContext, node: UCallExpression, method: PsiMethod) {
-        if (method.name.equals(FIND_VIEW_BY_ID_METHOD, ignoreCase = true)) {
-            context.report(
-                issue = ISSUE_FIND_VIEW_BY_ID_USAGE,
-                scope = node,
-                location = context.getCallLocation(
-                    call = node,
-                    includeArguments = true,
-                    includeReceiver = true
-                ),
-                message = FIND_VIEW_BY_ID_USAGE_MESSAGE
-            )
-        }
+        println("CH_D: ${method.name}")
+
+        context.report(
+            ISSUE_FIND_VIEW_BY_ID_USAGE,
+            node,
+            context.getLocation(node),
+            FIND_VIEW_BY_ID_USAGE_MESSAGE
+        )
     }
 
     companion object {
-        internal val ISSUE_FIND_VIEW_BY_ID_USAGE = Issue.create(
+        val ISSUE_FIND_VIEW_BY_ID_USAGE = Issue.create(
             id = "FindViewByIdUsage",
             briefDescription = FIND_VIEW_BY_ID_USAGE_MESSAGE,
             explanation = """Accessing a view should be done through view binding opposed to `findViewById`""".trimIndent(),
