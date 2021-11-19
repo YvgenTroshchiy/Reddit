@@ -65,7 +65,7 @@ ext {
     coroutineVersion = '1.5.2'
     lifecycle_version = '2.4.0'
     arrow_version = '0.10.4'
-
+    dagger_version = '2.40.1'
     // required to avoid crash on Android 12 API 31
     work_version = '2.7.0'
     lint_version = '30.2.0-alpha03'
