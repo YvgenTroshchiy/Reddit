@@ -59,16 +59,16 @@ task clean(type: Delete) {
 
 ext {
     koin_version = '2.1.3'
-    dagger_version = "2.40"
+    dagger_version = '2.40'
     arch_components_version = '1.1.1'
-    nav_version = "2.3.5"
-    paging_version = "3.0.1"
-    coroutineVersion = "1.5.2"
-    lifecycle_version = "2.4.0-rc01"
-    arrow_version = "0.10.4"
+    nav_version = '2.3.5'
+    paging_version = '3.0.1'
+    coroutineVersion = '1.5.2'
+    lifecycle_version = '2.4.0'
+    arrow_version = '0.10.4'
 
     // required to avoid crash on Android 12 API 31
-    work_version = "2.7.0-beta01"
+    work_version = '2.7.0'
     lint_version = '30.2.0-alpha03'
 }
 
