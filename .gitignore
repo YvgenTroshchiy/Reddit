@@ -1,15 +1,15 @@
-*.iml
 /local.properties
-/build
 /captures
 .externalNativeBuild
 
 # Android Studio
 .gradle
-.idea
-!/.idea/codeStyles/codeStyleConfig.xml
-!/.idea/codeStyles/Project.xml
-!/.idea/dictionaries/thredup.xml
+/build
+
+# intellij
+.idea/*
+!.idea/codeStyles/
+*.iml
 
 # OSX files
 .DS_Store
