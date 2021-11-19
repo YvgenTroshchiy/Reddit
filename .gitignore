@@ -1,11 +1,15 @@
 *.iml
-.gradle
 /local.properties
-/.idea/caches/build_file_checksums.ser
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-.DS_Store
 /build
 /captures
 .externalNativeBuild
+
+# Android Studio
+.gradle
+.idea
+!/.idea/codeStyles/codeStyleConfig.xml
+!/.idea/codeStyles/Project.xml
+!/.idea/dictionaries/thredup.xml
+
+# OSX files
+.DS_Store
