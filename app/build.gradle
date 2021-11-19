@@ -126,11 +126,6 @@ dependencies {
     androidTestImplementation "org.koin:koin-test:$koin_version"
     // endregion
 
-    // region Dagger
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    // endregion
-
     // region Arrow
     implementation "io.arrow-kt:arrow-core:$arrow_version"
     implementation "io.arrow-kt:arrow-syntax:$arrow_version"
