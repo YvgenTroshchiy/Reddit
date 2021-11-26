@@ -7,11 +7,12 @@ import com.troshchii.reddit.core.functional.Either
 import com.troshchii.reddit.network.RedditService
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import com.troshchii.reddit.ui.topnews.data.toTopNews
+import javax.inject.Inject
 
 //const val LIMIT = 25
 const val LIMIT = 12
 
-class TopNewsUseCase(private val service: RedditService) : UseCase<List<RedditPost>, String>() {
+class TopNewsUseCase @Inject constructor(private val service: RedditService) : UseCase<List<RedditPost>, String>() {
 
     private val tag = getLogTag<TopNewsUseCase>()
 

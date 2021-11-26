@@ -1,4 +1,4 @@
-package com.troshchii.reddit.di.dagger
+package com.troshchii.reddit.di
 
 import android.content.Context
 import com.google.gson.FieldNamingPolicy

@@ -7,9 +7,10 @@ import com.troshchii.reddit.domain.LIMIT
 import com.troshchii.reddit.network.RedditService
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import com.troshchii.reddit.ui.topnews.data.toTopNews
-import java.util.LinkedList
+import java.util.*
+import javax.inject.Inject
 
-class TopNewsRepository(
+class TopNewsRepository @Inject constructor(
 //    private val topNewsUseCase: TopNewsUseCase,
     private val service: RedditService
 ) {

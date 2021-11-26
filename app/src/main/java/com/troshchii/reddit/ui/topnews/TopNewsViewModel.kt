@@ -14,10 +14,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val VISIBLE_THRESHOLD = 5
 
-class TopNewsViewModel constructor(private val repository: TopNewsRepository) : BaseViewModel() {
+class TopNewsViewModel @Inject constructor(private val repository: TopNewsRepository) : BaseViewModel() {
 
     private val _topNews: MutableStateFlow<Async<List<RedditPost>>> = MutableStateFlow(Loading())
     val topNews: StateFlow<Async<List<RedditPost>>> = _topNews.asStateFlow()

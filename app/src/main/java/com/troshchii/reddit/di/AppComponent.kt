@@ -1,9 +1,11 @@
-package com.troshchii.reddit.dagger
+package com.troshchii.reddit.di
 
 import android.content.Context
 import com.google.android.datatransport.runtime.dagger.BindsInstance
 import com.google.android.datatransport.runtime.dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [NetworkModule::class])
 interface AppComponent {
 
@@ -13,5 +15,7 @@ interface AppComponent {
         // With @BindsInstance, the Context passed in will be available in the graph
         fun create(@BindsInstance context: Context): AppComponent
     }
+
+//    fun inject(fragment: TopNewsFragment)
 
 }
