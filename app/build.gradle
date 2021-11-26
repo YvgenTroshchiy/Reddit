@@ -70,10 +70,6 @@ dependencies {
     implementation project(':core')
     // endregion
 
-    // region Others
-    lintPublish project(':lintrules')
-    // endregion
-
     // region Androidx
     implementation 'androidx.core:core-ktx:1.7.0'
 
