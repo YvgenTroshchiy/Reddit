@@ -14,10 +14,11 @@ val Context.appComponent: AppComponent
 class App : Application() {
 
 //    val appComponent: AppComponent by lazy {
+//        DaggerAppComponent.factory().create(this)
 //    }
 
     override fun onCreate() {
-        if (BuildConfig.DEBUG) setStrictMode()
+//        if (BuildConfig.DEBUG) setStrictMode()
         super.onCreate()
     }
 }

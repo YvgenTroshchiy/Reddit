@@ -1,5 +1,6 @@
 package com.troshchii.reddit.ui.topnews
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,28 +17,31 @@ import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.MaterialElevationScale
 import com.troshchii.reddit.R
+import com.troshchii.reddit.appComponent
 import com.troshchii.reddit.core.Fail
 import com.troshchii.reddit.core.Success
-import com.troshchii.reddit.core.extensions.getLogTag
-import com.troshchii.reddit.core.extensions.logI
-import com.troshchii.reddit.core.extensions.logW
-import com.troshchii.reddit.core.extensions.observe
-import com.troshchii.reddit.core.extensions.toast
+import com.troshchii.reddit.core.extensions.*
 import com.troshchii.reddit.core.utils.viewBinding
 import com.troshchii.reddit.databinding.TopnewsFragmentBinding
 import com.troshchii.reddit.ui.topnews.data.RedditPost
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 class TopNewsFragment : Fragment() {
 
     private val logTag = getLogTag<TopNewsFragment>()
 
     private var binding: TopnewsFragmentBinding by viewBinding()
-    private val viewModel: TopNewsViewModel by viewModel()
+
+    @Inject lateinit var viewModel: TopNewsViewModel
 
     private lateinit var topNewsAdapter: TopNewsAdapter
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        context.appComponent.inject(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
