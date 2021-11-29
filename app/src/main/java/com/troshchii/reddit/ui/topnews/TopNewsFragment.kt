@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.MaterialElevationScale
+import com.troshchii.reddit.App
 import com.troshchii.reddit.R
-import com.troshchii.reddit.appComponent
 import com.troshchii.reddit.core.Fail
 import com.troshchii.reddit.core.Success
 import com.troshchii.reddit.core.extensions.*
@@ -40,7 +40,8 @@ class TopNewsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        context.appComponent.inject(this)
+//        appComponent
+//        context.appComponent.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

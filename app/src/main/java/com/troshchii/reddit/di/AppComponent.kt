@@ -3,6 +3,7 @@ package com.troshchii.reddit.di
 import android.content.Context
 import com.google.android.datatransport.runtime.dagger.BindsInstance
 import com.google.android.datatransport.runtime.dagger.Component
+import com.troshchii.reddit.App
 import com.troshchii.reddit.ui.topnews.TopNewsFragment
 import javax.inject.Singleton
 
@@ -17,6 +18,7 @@ interface AppComponent {
         fun create(@BindsInstance context: Context): AppComponent
     }
 
+    fun inject(app: App)
     fun inject(topNewsFragment: TopNewsFragment)
 
 }

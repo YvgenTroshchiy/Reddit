@@ -11,6 +11,8 @@ plugins {
 
 android {
     compileSdkVersion 31
+    buildToolsVersion "30.0.3"
+
     defaultConfig {
         applicationId "com.troshchii.reddit"
         minSdkVersion 26
@@ -140,6 +142,10 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.4.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation "androidx.work:work-testing:$work_version"
+
+    // Using Dagger in androidTest and Robolectric too
+    kaptTest "com.google.dagger:dagger-compiler:$dagger_version"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
     // endregion
 }
 
