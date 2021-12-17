@@ -8,15 +8,14 @@ import com.troshchii.reddit.BuildConfig
 import com.troshchii.reddit.network.RedditService
 import dagger.Module
 import dagger.Provides
+import java.io.File
+import java.util.concurrent.TimeUnit
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level.BASIC
-import okhttp3.logging.HttpLoggingInterceptor.Level.NONE
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.File
-import java.util.concurrent.TimeUnit
 
 private const val TIMEOUT = 30L
 
@@ -38,9 +37,12 @@ private const val TIMEOUT = 30L
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
-            .addInterceptor(HttpLoggingInterceptor().apply { level = if (BuildConfig.DEBUG) BASIC else NONE })
             .cache(cache)
-            .build()
+            .apply {
+                if (BuildConfig.DEBUG) {
+                    addInterceptor(HttpLoggingInterceptor().apply { level = BASIC })
+                }
+            }.build()
 
     @Provides fun cache(cacheFile: File) = Cache(cacheFile, (10 * 1024 * 1024 /* 10MB Cache */).toLong())
 
