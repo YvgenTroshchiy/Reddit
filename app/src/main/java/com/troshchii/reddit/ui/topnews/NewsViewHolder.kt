@@ -8,17 +8,17 @@ import com.troshchii.reddit.ui.topnews.data.RedditPost
 
 class NewsViewHolder(private val binding: ListItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(news: RedditPost, itemClick: (RedditPost, View) -> Unit) {
+    fun bind(post: RedditPost, itemClick: (RedditPost, View) -> Unit) {
         with(binding) {
 
-            root.transitionName = news.thumbnail
-            root.setOnClickListener { itemClick.invoke(news, binding.root) }
+            root.transitionName = post.thumbnail
+            root.setOnClickListener { itemClick.invoke(post, binding.root) }
 
-            title.text = news.title
-            image.setImageUrl(news.thumbnail)
-            author.text = news.author
-            xHoursAgo.text = news.created_utc
-            numComments.text = news.numComments
+            title.text = post.title
+            image.setImageUrl(post.thumbnail)
+            author.text = post.author
+            xHoursAgo.text = post.created_utc
+            numComments.text = post.numComments
         }
     }
 }
