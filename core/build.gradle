@@ -44,9 +44,8 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.12.0'
     // endregion
 
-    // region Androidx
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    // endregion
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
