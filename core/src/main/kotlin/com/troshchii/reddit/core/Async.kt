@@ -1,14 +1,8 @@
 package com.troshchii.reddit.core
 
-import java.util.Arrays
+/* it's was copied from https://github.com/airbnb/mavericks/blob/main/mvrx/src/main/kotlin/com/airbnb/mvrx/Async.kt */
 
 /**
- * Async is a state representation of asynchronous operations
- * Uninitialized
- * Loading
- * Success
- * Fail - has an error property to retrieve the failure.
- *
  * The T generic is unused for some classes but since it is sealed and useful for Success and Fail,
  * it should be on all of them.
  *
@@ -26,19 +20,46 @@ sealed class Async<out T>(val complete: Boolean, val shouldLoad: Boolean, privat
      * Can be invoked as an operator like: `yourProp()`
      */
     open operator fun invoke(): T? = value
+
+    companion object {
+        /**
+         * Helper to set metadata on a Success instance.
+         * @see Success.metadata
+         */
+        fun <T> Success<*>.setMetadata(metadata: T) {
+            this.metadata = metadata
+        }
+
+        /**
+         * Helper to get metadata on a Success instance.
+         * @see Success.metadata
+         */
+        @Suppress("UNCHECKED_CAST")
+        fun <T> Success<*>.getMetadata(): T? = this.metadata as T?
+    }
 }
 
-object Uninitialized :
-    Async<Nothing>(complete = false, shouldLoad = true, value = null),
-    Incomplete
+object Uninitialized : Async<Nothing>(complete = false, shouldLoad = true, value = null), Incomplete
 
-data class Loading<out T>(private val value: T? = null) :
-    Async<T>(complete = false, shouldLoad = false, value = value),
-    Incomplete
+data class Loading<out T>(private val value: T? = null) : Async<T>(complete = false, shouldLoad = false, value = value), Incomplete
 
 data class Success<out T>(private val value: T) : Async<T>(complete = true, shouldLoad = false, value = value) {
 
     override operator fun invoke(): T = value
+
+    /**
+     * Optional information about the value.
+     * This is intended to support tooling (eg logging).
+     * It allows data about the original Observable to be kept and accessed later. For example,
+     * you could map a network request to just the data you need in the value, but your base layers could
+     * keep metadata about the request, like timing, for logging.
+     *
+     * @see MavericksViewModel.execute
+     * @see Async.setMetadata
+     * @see Async.getMetadata
+     */
+//    @InternalMavericksApi
+    var metadata: Any? = null
 }
 
 data class Fail<out T>(val error: Throwable, private val value: T? = null) : Async<T>(complete = true, shouldLoad = true, value = value) {
@@ -51,7 +72,7 @@ data class Fail<out T>(val error: Throwable, private val value: T? = null) : Asy
                 error.stackTrace.firstOrNull() == otherError.stackTrace.firstOrNull()
     }
 
-    override fun hashCode(): Int = Arrays.hashCode(arrayOf(error::class, error.message, error.stackTrace[0]))
+    override fun hashCode(): Int = arrayOf(error::class, error.message, error.stackTrace.firstOrNull()).contentHashCode()
 }
 
 /**
