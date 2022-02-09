@@ -1,6 +1,7 @@
 package com.troshchii.reddit.di
 
 import android.content.Context
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -41,6 +42,7 @@ private const val TIMEOUT = 30L
             .apply {
                 if (BuildConfig.DEBUG) {
                     addInterceptor(HttpLoggingInterceptor().apply { level = BASIC })
+                    addInterceptor(StethoInterceptor())
                 }
             }.build()
 
