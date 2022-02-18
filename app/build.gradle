@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
-    id 'androidx.navigation.safeargs.kotlin'
+    id 'androidx.navigation.safeargs' // removed .kotiln because of https://stackoverflow.com/a/67681697/3825816
     id 'project-report' // To be able run "./gradlew dependencyReport"
 }
 

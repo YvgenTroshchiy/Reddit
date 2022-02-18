@@ -142,7 +142,7 @@ class TopNewsFragment : Fragment() {
         }
 
         val extras = FragmentNavigatorExtras(view to getString(R.string.transition_image))
-        val action = TopNewsFragmentDirections.actionTopNewsFragmentToNewsDetailsFragments(it)
+        val action = TopNewsFragmentDirections.toNewsDetailsFragments(it)
 
         findNavController().navigate(action, extras)
     }
