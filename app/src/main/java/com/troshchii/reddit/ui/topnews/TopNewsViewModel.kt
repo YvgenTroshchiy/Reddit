@@ -6,22 +6,24 @@ import androidx.lifecycle.viewModelScope
 import com.troshchii.reddit.core.Async
 import com.troshchii.reddit.core.BaseViewModel
 import com.troshchii.reddit.core.Loading
+import com.troshchii.reddit.core.StateClass
 import com.troshchii.reddit.core.extensions.logI
 import com.troshchii.reddit.core.toAsync
 import com.troshchii.reddit.core.utils.debugDelayAsync
 import com.troshchii.reddit.ui.topnews.data.RedditPost
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 private const val VISIBLE_THRESHOLD = 5
 
+class TopNewsState() {
+    val topNews: List<RedditPost>? = null
+    var isLoadingMore = false
+}
+
 class TopNewsViewModel @Inject constructor(private val repository: TopNewsRepository) : BaseViewModel() {
 
-    private val _topNews: MutableStateFlow<Async<List<RedditPost>>> = MutableStateFlow(Loading())
-    val topNews: StateFlow<Async<List<RedditPost>>> = _topNews.asStateFlow()
+    val topNews: StateClass<Async<List<RedditPost>>> = StateClass(Loading())
 
     var isLoading: LiveData<Boolean> = MutableLiveData(false)
     var isLoadingMore: LiveData<Boolean> = MutableLiveData(false)
@@ -31,7 +33,7 @@ class TopNewsViewModel @Inject constructor(private val repository: TopNewsReposi
         viewModelScope.launch {
             isLoading.postUpdate(true)
             debugDelayAsync(2) // To catch better loading more animation :)
-            _topNews.value = repository.initialLoad().toAsync()
+            topNews.update(repository.initialLoad().toAsync())
             isLoading.postUpdate(false)
         }
     }
@@ -47,7 +49,7 @@ class TopNewsViewModel @Inject constructor(private val repository: TopNewsReposi
                 isLoadingMore.postUpdate(true)
                 debugDelayAsync(3) // To catch better loading more animation :)
                 val value = repository.loadMore()
-                _topNews.value = value.toAsync()
+                topNews.update(value.toAsync())
                 this@TopNewsViewModel.isLoadingMore.postUpdate(false)
             }
         }

@@ -68,7 +68,7 @@ class TopNewsFragment : Fragment() {
         setupNewsList()
 
         lifecycleScope.launch {
-            viewModel.topNews
+            viewModel.topNews.state
                 .flowWithLifecycle(lifecycle)
                 .collect {
                     when (it) {
