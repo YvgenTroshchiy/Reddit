@@ -9,7 +9,7 @@ buildscript {
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.1'
+        classpath 'com.android.tools.build:gradle:7.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.4.1"
     }
@@ -29,10 +29,10 @@ task clean(type: Delete) {
 
 ext {
     arch_components_version = '1.1.1'
-    nav_version = '2.3.5'
+    nav_version = '2.4.1'
     paging_version = '3.0.1'
-    coroutineVersion = '1.5.2'
-    lifecycle_version = '2.4.0'
+    coroutineVersion = '1.6.0'
+    lifecycle_version = '2.4.1'
     arrow_version = '0.10.4'
     dagger_version = '2.40.5'
     // required to avoid crash on Android 12 API 31
