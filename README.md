@@ -26,13 +26,13 @@ Top news|News details
 ## Technologies, Components
 * MVVM
 * Kotlin, Coroutines, Flow
+* Dagger 2
 * Multi-module
 * Android architecture components
     * ViewModel
     * <s>LiveData</s>. Was replaced by Flow.
 * Navigation library
 * ViewBinding
-* Koin 2
 * MaterialCardView
 * Retrofit
 
@@ -41,7 +41,3 @@ Top news|News details
 
 ## Other
 * DataBinding was removed because I strongly against about it.
-
-## In _dagger_ branch (Obsolete and deleted)
-* Android Dagger 2
-* Rxjava 2
