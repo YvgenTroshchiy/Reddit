@@ -44,6 +44,7 @@ android {
         buildConfig = true
         viewBinding true
     }
+    namespace 'com.troshchii.reddit'
 }
 
 dependencies {
